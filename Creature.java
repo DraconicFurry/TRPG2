@@ -1,4 +1,4 @@
-public class Creature {
+public class Creature { //Furry
 	
 	String name;
 	int level;
