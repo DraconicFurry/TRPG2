@@ -20,7 +20,7 @@ public class Creature {
 		this.wep = wep;
 	}
 	
-	public Creature(String name, int level, int HP, int MP,) {
+	public Creature(String name, int level, int HP, int MP) {
 		this.level = level;
 		this.MHP = HP;
 		this.MMP = MP;
