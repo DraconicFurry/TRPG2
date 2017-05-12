@@ -5,7 +5,7 @@ public class NameGenerator {
     private String[] meleePrefixes = new String[] {"Edgy", "Enchanted", "Burning", "Frozen", "Electric", "Blooming", "Arcane", "Demonic", "Angelic", "Runic", "Sharp", "Heavy", "Weighted", "Polished"};
     private String[] rangedWeapons = new String[] {"Bow", "Gun", "Crossbow", "Javelin"};
     private String[] magicWeapons = new String[] {"Staff", "Rod", "Wand", "Scepter"};
-    private String[] meleeWeapons = new String[] {"Sword", "Knife", "Mace", "Axe", "Spear", "Warhammer", "Trident}";
+    private String[] meleeWeapons = new String[] {"Sword", "Knife", "Mace", "Axe", "Spear", "Warhammer", "Trident"};
     
     public static String generateWepName(boolean isRanged) {
         String prefix;
