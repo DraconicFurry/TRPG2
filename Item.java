@@ -9,6 +9,6 @@ public abstract class Item {
     }
     
     public String toStrng() {
-        System.out.println(name + " (" + value + " g" + ")"); 
+        System.out.println(name + " (" + value + "g" + ")"); 
     }
 }
