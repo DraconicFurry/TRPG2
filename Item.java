@@ -1,9 +1,8 @@
-public class Item {
+public abstract class Item {
     
     private String name;
-    private int value;
-    private int number;
-    
+    private int goldValue;
+
     public Item(name, value, number) {
         this.name = name;
         this.value = value;
@@ -11,6 +10,6 @@ public class Item {
     }
     
     public String toStrng() {
-        System.out.println(name + "x" + number + " (" + value + "g" + ")"); 
+        System.out.println(name + " (" + value + " g" + ")"); 
     }
 }
