@@ -13,6 +13,7 @@ public class Encounter {
   	public Encounter(Creature player, Creature[] enemies) {
   		this.player = player;
     	this.enemies = new ArrayList<Creature>();
+		
     	for (int i = 0; i < enemies.length; i++) {
       		this.enemies.add(enemies[i];
     	}
@@ -20,7 +21,9 @@ public class Encounter {
 
 	public run() {
 		while(true) { //replace with end condition
+			
 			playerAction();
+			
 			for (int i = 0; i < enemies.size(); i++) {
 				enemyAction(enemies.get(i));
 			}
