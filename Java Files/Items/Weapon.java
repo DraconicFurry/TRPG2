@@ -4,7 +4,7 @@ public class Weapon extends Item {
     private int maxDam;
     private int damRange;
     private boolean isRanged;
-    private boolean isMagic
+    private boolean isMagic;
     
     public Weapon(String name, int value, int minDam, int maxDam, boolean isRanged, boolean isMagic) {
         super(name, value);
