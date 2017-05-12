@@ -15,8 +15,4 @@ public abstract class Item {
     public String getValue() {
         return value;
     }
-    
-    public String toStrng() {
-        System.out.println(name + " (" + value + "g" + ")"); 
-    }
 }
