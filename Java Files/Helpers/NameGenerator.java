@@ -7,16 +7,16 @@ public class NameGenerator {
     
     public String generateWepName(boolean isRanged) {
         String prefix;
-        String type;
+        String wepType;
         
         if (isRanged) {
             prefix = rangedPrefixes[(int)(Math.Random() * rangedPrefixes.length)];
-            type = rangedWeapons[(int)(Math.Random() * rangedWeapons.length)];
+            wepType = rangedWeapons[(int)(Math.Random() * rangedWeapons.length)];
         } else {
             prefix = meleePrefixes[(int)(Math.Random() * meleePrefixes.length)];
-            type = meleeWeapons[(int)(Math.Random() * meleeWeapons.length)];
+            wepType = meleeWeapons[(int)(Math.Random() * meleeWeapons.length)];
         }
         
-        return (prefix + " " + type);
+        return (prefix + " " + wepType);
     }
 }
