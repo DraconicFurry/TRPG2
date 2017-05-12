@@ -14,7 +14,7 @@ public class NameGenerator {
             type = rangedWeapons[(int)(Math.Random() * rangedWeapons.length)];
         } else {
             prefix = meleePrefixes[(int)(Math.Random() * meleePrefixes.length)];
-            type = meleeWeapons[(int)(Math.Random() * meleeWeapons.length)]
+            type = meleeWeapons[(int)(Math.Random() * meleeWeapons.length)];
         }
         
         return (prefix + " " + type);
