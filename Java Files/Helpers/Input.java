@@ -3,7 +3,7 @@ import java.util.*;
 public class Input {
 	
 	public int intPrompt(String prompt) {
-		Scanner sc = new Scanner(System.out);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Input " + prompt + ":");
 		System.out.print(">> ");
 		try {
@@ -33,7 +33,7 @@ public class Input {
 	}
 	
 	public String strPrompt(String prompt) {
-		Scanner sc = new Scanner(System.out);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Input " + prompt + ":");
 		System.out.print(">> ");
 		try {
