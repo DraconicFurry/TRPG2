@@ -8,6 +8,10 @@ public abstract class Item {
         this.goldValue = value;
     }
     
+    public String getName() {
+        return name;    
+    }
+    
     public String toStrng() {
         System.out.println(name + " (" + value + "g" + ")"); 
     }
