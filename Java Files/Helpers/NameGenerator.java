@@ -7,7 +7,7 @@ public class NameGenerator {
     private String[] magicWeapons = new String[] {"Staff", "Rod", "Wand", "Scepter"};
     private String[] meleeWeapons = new String[] {"Sword", "Knife", "Mace", "Axe", "Spear", "Warhammer", "Trident}";
     
-    public String generateWepName(boolean isRanged) {
+    public static String generateWepName(boolean isRanged) {
         String prefix;
         String wepType;
         
