@@ -7,21 +7,21 @@ public class NameGenerator {
     private String[] magicWeapons = new String[] {"Staff", "Rod", "Wand", "Scepter"};
     private String[] meleeWeapons = new String[] {"Sword", "Knife", "Mace", "Axe", "Spear", "Warhammer", "Trident"};
     
-    public static String generateWepName(boolean isRanged) {
+    public static String generateWepName(boolean isRanged, boolean isMagic) {
         String prefix;
         String wepType;
         
         if (isRanged) {
             if (isMagic) {
-                prefix = magicPrefixes[(int)(Math.Random() * rangedPrefixes.length)];
-                wepType = magicWeapons[(int)(Math.Random() * rangedWeapons.length)];
+                prefix = magicPrefixes[(int)(Math.random() * rangedPrefixes.length)];
+                wepType = magicWeapons[(int)(Math.random() * rangedWeapons.length)];
             } else {
-                prefix = rangedPrefixes[(int)(Math.Random() * rangedPrefixes.length)];
-                wepType = rangedWeapons[(int)(Math.Random() * rangedWeapons.length)];
+                prefix = rangedPrefixes[(int)(Math.random() * rangedPrefixes.length)];
+                wepType = rangedWeapons[(int)(Math.random() * rangedWeapons.length)];
             }
         } else {
-            prefix = meleePrefixes[(int)(Math.Random() * meleePrefixes.length)];
-            wepType = meleeWeapons[(int)(Math.Random() * meleeWeapons.length)];
+            prefix = meleePrefixes[(int)(Math.random() * meleePrefixes.length)];
+            wepType = meleeWeapons[(int)(Math.random() * meleeWeapons.length)];
         }
         
         return (prefix + " " + wepType);
