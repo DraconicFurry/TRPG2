@@ -35,7 +35,15 @@ public class Encounter {
 			int action = validIntPrompt("action number", 3);
 			switch (action) {
 				case 1:
-					//placeholder
+					for (int i = 0; i < enemies.size(); i++) {
+						System.out.println((i + 1) + ": " + enemies.get(i).getName());
+					}
+					int target = validIntPrompt("target", enemies.size());
+					enemies.get(target - 1).takeDamage(player.wep.calculateAtk());
+					if (enemies.get(target - 1).isDead) {
+						//Gold + XP rewards here
+						enemies.remove(target - 1);
+					}
 					turnOver = true;
 					break;
 				case 2:
