@@ -8,7 +8,7 @@ public class Input {
 		System.out.print(">> ");
 		try {
 			return sc.nextInt();
-		} catch Exception {
+		} catch (InputMismatchException ex) {
 			System.out.println("Invalid Input.");
 			return intPrompt(prompt);
 		}
@@ -38,7 +38,7 @@ public class Input {
 		System.out.print(">> ");
 		try {
 			return sc.next();
-		} catch Exception {
+		} catch (InputMismatchException ex) {
 			System.out.println("Invalid Input.");
 			return strPrompt(prompt);
 		}
