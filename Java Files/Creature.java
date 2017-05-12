@@ -2,15 +2,15 @@ import java.util.*;
 
 public class Creature {
 	
-	String name;
-	int level;
-	int XP;
-	int HP;
-	int MHP;
-	boolean isDead;
-	int MP;
-	int MMP;
-	Weapon wep;
+	private String name;
+	private int level;
+	private int XP;
+	private int HP;
+	private int MHP;
+	public boolean isDead;
+	private int MP;
+	private int MMP;
+	prviate Weapon wep;
 	
 	public Creature(String name, int level, int HP, int MP, Weapon wep) {
 		this.level = level;
@@ -26,6 +26,38 @@ public class Creature {
 		this.MMP = MP;
 		isDead = false;
 		this.wep = new Weapon("Fists", 1, 1, false, false);
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Weapon getWep() {
+		return wep;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	public int getXP() {
+		return XP;
+	}
+	
+	public int getHealth() {
+		return HP;
+	}
+	
+	public int getMaxHealth() {
+		return MHP;
+	}
+	
+	public int getMana() {
+		return MP;
+	}
+	
+	public int getMaxMana() {
+		return MMP;
 	}
 	
 	private void levelUp() {
