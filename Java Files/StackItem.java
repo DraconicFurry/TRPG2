@@ -13,6 +13,6 @@ public class StackItem extends Item {
     }
     
     public String toString() {
-        return ("(Junk) " + super.getName() + ": " + super.getValue() + "g ");
+        return ("(Junk) " + getName() + ": " + getValue() + "g");
     }
 }   
