@@ -11,10 +11,10 @@ public class Encounter {
  	}
   
   	public Encounter(Creature player, Creature[] enemies) {
-    	this.player = player;
+  		this.player = player;
     	this.enemies = new ArrayList<Creature>();
     	for (int i = 0; i < enemies.length; i++) {
-      	this.enemies.add(enemies[i];
+      		this.enemies.add(enemies[i];
     	}
-  	}
+	}
 }
