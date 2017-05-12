@@ -60,6 +60,18 @@ public class Creature {
 		return MMP;
 	}
 	
+	public void changeMana(int difference) {
+		MP += difference;
+		
+		if (MP > MMP) {
+			MP = MMP;
+		}
+		
+		if (MP < 0) {
+			MP = 0;
+		}
+	}
+	
 	private void levelUp() {
 		if (XP >= (level * 100)) {
 			XP -= level * 100;
