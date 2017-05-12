@@ -76,7 +76,7 @@ public class Encounter {
 	}
 							 
 	public void allyAction(Creature ally) {
-		int target = Math.random() * enemies.size();
+		int target = (int)(Math.random() * enemies.size());
 		enemies.get(target).takeDamage(ally.getWep().calculateAtk());
 		if (enemies.get(target).isDead) {
 			//Rewards
@@ -88,7 +88,7 @@ public class Encounter {
 		if (allies == null) {
 			player.takeDamage(enemy.getWep().calculateAtk());
 		} else {
-			int target = Math.random() * (allies.size() + 1);
+			int target = (int)(Math.random() * (allies.size() + 1));
 			if (target == 0) {
 				player.takeDamage(enemy.getWep().calculateAtk());	
 			} else {
