@@ -28,7 +28,7 @@ public class Creature {
 		this.wep = new Weapon("Fists", 1, 1, false, false);
 	}
 	
-	private levelUp() {
+	private void levelUp() {
 		if (XP >= (level * 100)) {
 			XP -= level * 100;
 			level++;
@@ -41,7 +41,7 @@ public class Creature {
 		}
 	}
 	
-	public takeDamage(int damage) { //add isRanged and isMagic
+	public void takeDamage(int damage) { //add isRanged and isMagic
 		HP -= damage;
 		if (HP <= 0) {
 			HP = 0;
