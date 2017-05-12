@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Input {
 	
-	public int intPrompt(String prompt) {
+	public static int intPrompt(String prompt) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Input " + prompt + ":");
 		System.out.print(">> ");
@@ -14,7 +14,7 @@ public class Input {
 		}
 	}
 	
-	public int validIntPrompt(String prompt, int max) {
+	public static int validIntPrompt(String prompt, int max) {
 		int out = intPrompt(prompt);
 		while (out > max || out < 1) {
 			System.out.println("Invalid Input.");
@@ -23,7 +23,7 @@ public class Input {
 		return out;
 	}
 	
-	public int validIntPrompt(String prompt, int min, int max) {
+	public static int validIntPrompt(String prompt, int min, int max) {
 		int out = intPrompt(prompt);
 		while (out > max || out < min) {
 			System.out.println("Invalid Input.");
@@ -32,7 +32,7 @@ public class Input {
 		return out;
 	}
 	
-	public String strPrompt(String prompt) {
+	public static String strPrompt(String prompt) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Input " + prompt + ":");
 		System.out.print(">> ");
