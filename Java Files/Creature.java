@@ -66,10 +66,6 @@ public class Creature {
 		if (MP > MMP) {
 			MP = MMP;
 		}
-		
-		if (MP < 0) {
-			MP = 0;
-		}
 	}
 	
 	private void levelUp() {
