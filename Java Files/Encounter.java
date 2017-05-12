@@ -26,7 +26,7 @@ public class Encounter {
     	}
 	}
 
-	public run() {
+	public void run() {
 		while(!player.isDead && enemies.size() > 0) {
 			playerAction();
 			if (allies != null) {
@@ -40,7 +40,7 @@ public class Encounter {
 		}
 	}
 	
-	public playerAction() {
+	public void playerAction() {
 		while (!turnOver) {
 			System.out.println("1: Attack");
 			System.out.println("2: Skills");
@@ -74,7 +74,7 @@ public class Encounter {
 		}
 	}
 							 
-	public allyAction(Creature ally) {
+	public void allyAction(Creature ally) {
 		int target = Math.random() * enemies.size();
 		enemies.get(target).takeDamage(ally.wep.calculateAtk());
 		if (enemies.get(target).isDead) {
@@ -83,7 +83,7 @@ public class Encounter {
 		}
 	}
 	
-	public enemyAction(Creature enemy) {
+	public void enemyAction(Creature enemy) {
 		if (allies == null) {
 			player.takeDamage(enemy.wep.calculateAtk());
 		} else {
