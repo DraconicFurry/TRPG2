@@ -1,7 +1,7 @@
 public abstract class Item {
     
     private String name;
-    private int goldValue;
+    private int value;
 
     public Item(String name, int value) {
         this.name = name;
@@ -10,6 +10,10 @@ public abstract class Item {
     
     public String getName() {
         return name;    
+    }
+    
+    public String getValue() {
+        return value;
     }
     
     public String toStrng() {
