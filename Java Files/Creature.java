@@ -25,7 +25,7 @@ public class Creature {
 		this.MHP = HP;
 		this.MMP = MP;
 		isDead = false;
-		this.wep = new Weapon("Fists", 1, 1, false, false);
+		this.wep = new Weapon("Fists of Furry", 0, 1, 1, false, false);
 	}
 	
 	public String getName() {
