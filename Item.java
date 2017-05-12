@@ -3,10 +3,9 @@ public abstract class Item {
     private String name;
     private int goldValue;
 
-    public Item(name, value, number) {
+    public Item(String name, int value) {
         this.name = name;
-        this.value = value;
-        this.number = numer;
+        this.goldValue = value;
     }
     
     public String toStrng() {
