@@ -6,8 +6,8 @@ public class Weapon extends Item {
     private boolean isRanged;
     private boolean isMagic;
     
-    public Weapon(String name, int minDam, int maxDam, boolean isRanged, boolean isMagic) {
-        this.name = name
+    public Weapon(String name, int value, int minDam, int maxDam, boolean isRanged, boolean isMagic) {
+        super(name, value);
         this.minDam = minDam;
         this.maxDam = maxDam;
         this.damRange = maxDam - minDam;
