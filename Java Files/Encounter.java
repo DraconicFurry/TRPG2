@@ -4,10 +4,18 @@ public class Encounter {
   
 	Creature player;
 	ArrayList<Creature> enemies;
+	ArrayList<Creature> allies;
   
 	public Encounter(Creature player, ArrayList<Creature> enemies) {
 		this.player = player;
     	this.enemies = enemies;
+		this.allies = null;
+ 	}
+	
+	public Encounter(Creature player, ArrayList<Creature> enemies, ArrayList<Creature) allies) {
+		this.player = player;
+    	this.enemies = enemies;
+		this.allies = allies;
  	}
   
   	public Encounter(Creature player, Creature[] enemies) {
@@ -21,6 +29,11 @@ public class Encounter {
 	public run() {
 		while(!player.isDead && enemies.size() > 0) {
 			playerAction();
+			if (allies != null) {
+				for (int i = 0; i < allies.size(); i++) {
+					allyAction(allies.get(i));
+				}
+			}
 			for (int i = 0; i < enemies.size(); i++) {
 				enemyAction(enemies.get(i));
 			}
@@ -60,8 +73,29 @@ public class Encounter {
 			}
 		}
 	}
+							 
+	public allyAction(Creature ally) {
+		int target = Math.random() * enemies.size();
+		enemies.get(target).takeDamage(ally.wep.calculateAtk());
+		if (enemies.get(target).isDead) {
+			//Rewards
+			enemies.remove(target);
+		}
+	}
 	
 	public enemyAction(Creature enemy) {
-		//placeholder
+		if (allies == null) {
+			player.takeDamage(enemy.wep.calculateAtk());
+		} else {
+			int target = Math.random() * (allies.size() + 1);
+			if (target == 0) {
+				player.takeDamage(enemy.wep.calculateAtk());	
+			} else {
+				allies.get(target - 1).takeDamage(enemy.wep.calculateAtk());
+				if (allies.get(target - 1).isDead) {
+					allies.remove(target - 1);	
+				}
+			}
+		}
 	}
 }
