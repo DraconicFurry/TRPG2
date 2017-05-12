@@ -1,18 +1,19 @@
 Confirmed To-Do List
-
-  Implement Encounter class for combat
   
   Implement character creation dialogue
   
   Implement main menu
   
   Implement primary gameplay loop
+  
+  Implement Inventory class
+  
+  Implement Armor class
+  
+  Implement use for ResourceItems
 
 
 Possible Features to Implement
-
-  Inventory Class - stores list of Items
-    Weapons, Armor, etc. could be subclasses of Item
     
   Character Stats - Str, Int, Dex, etc.
   
