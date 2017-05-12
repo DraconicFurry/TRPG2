@@ -35,6 +35,6 @@ public class Weapon extends Item {
             magic = "Physical";
         }
         
-        return (name + " (" + range + ", " + magic + "): " + minDam + " - " + maxDam);
+        return (super.getName() + " (" + range + ", " + magic + "): " + minDam + " - " + maxDam);
     }
 }
