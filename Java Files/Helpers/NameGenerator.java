@@ -1,4 +1,4 @@
-public class nameGenerator {
+public class NameGenerator {
 
     private String[] rangedPrefixes = new String["Enchanted", "Burning", "Frozen", "Electric", "Blooming", "Arcane", "Demonic", "Angelic", "Runic", "Apprentice's", "Master's"];
     private String[] meleePrefixes = new String["Enchanted", "Burning", "Frozen", "Electric", "Blooming", "Arcane", "Demonic", "Angelic", "Runic", "Sharp", "Heavy", "Weighted", "Polished"];
@@ -6,10 +6,10 @@ public class nameGenerator {
     private String[] meleePrefixes = new String["Sword", "Knife", "Mace", "Axe", "Spear", "Warhammer", "Tridemt"];
     
     public String generateWeapName(boolean isRanged) {
-
         String prefix;
         String type;
         
+        if (isRanged
         }
         
   
