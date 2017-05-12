@@ -10,7 +10,7 @@ public class Creature {
 	public boolean isDead;
 	private int MP;
 	private int MMP;
-	prviate Weapon wep;
+	private Weapon wep;
 	
 	public Creature(String name, int level, int HP, int MP, Weapon wep) {
 		this.level = level;
