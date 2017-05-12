@@ -16,7 +16,7 @@ public class Weapon extends Item {
     }
     
     public int calculateAtk() {
-        return (int)((Math.Random() * damRange) + minDam);
+        return (int)((Math.random() * damRange) + minDam);
     }
     
     public String toString() {
