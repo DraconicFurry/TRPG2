@@ -10,12 +10,22 @@ public class Creature {
 	boolean isDead;
 	int MP;
 	int MMP;
+	Weapon wep;
 	
-	public Creature(String name, int level, int HP, int MP) {
+	public Creature(String name, int level, int HP, int MP, Weapon wep) {
 		this.level = level;
 		this.MHP = HP;
 		this.MMP = MP;
 		isDead = false;
+		this.wep = wep;
+	}
+	
+	public Creature(String name, int level, int HP, int MP,) {
+		this.level = level;
+		this.MHP = HP;
+		this.MMP = MP;
+		isDead = false;
+		this.wep = new Weapon("Fists", 1, 1, false, false);
 	}
 	
 	private levelUp() {
