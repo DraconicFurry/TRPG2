@@ -12,7 +12,7 @@ public abstract class Item {
         return name;    
     }
     
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 }
