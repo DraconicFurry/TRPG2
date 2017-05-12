@@ -1,15 +1,15 @@
 public class StackItem extends Item {
 
-    private int ammount;
+    private int amount;
     // private int maxAmmount;
     
-    public StackItem(String name, int value, int ammount) {
+    public StackItem(String name, int value, int amount) {
         super(name, value);
-        this.ammount = ammount;
+        this.amount = amount;
     }
     
-    public int getAmmount() {
-        return ammount;
+    public int getAmount() {
+        return amount;
     }
     
     public String toString() {
