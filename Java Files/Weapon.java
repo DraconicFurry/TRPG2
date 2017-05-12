@@ -1,6 +1,5 @@
 public class Weapon extends Item {
     
-    private String name;
     private int minDam;
     private int maxDam;
     private int damRange;
