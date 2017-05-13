@@ -32,13 +32,13 @@ public class Player extends Creature {
 		}
 	}
 	
-	public int getXP() {
-		return XP;
-	}
-	
 	public void reward(int gold, int XP) {
 		this.gold += gold;
 		this.XP += XP
 		levelUp();
+	}
+	
+	public int getXP() {
+		return XP;
 	}
 }
