@@ -1,3 +1,5 @@
+package Items;
+
 public class StackItem extends Item {
 
     private int amount;
