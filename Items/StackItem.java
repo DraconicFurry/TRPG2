@@ -14,6 +14,10 @@ public class StackItem extends Item {
         return amount;
     }
     
+    public void remove(int num) {
+        amount -= num;   
+    }
+    
     public String toString() {
         return ("(Junk) " + getName() + ": " + getValue() + "g");
     }
