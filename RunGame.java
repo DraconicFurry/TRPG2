@@ -17,10 +17,19 @@ public class RunGame {
 			System.out.println();
 			switch (menuChoice) {
 				case 1:
-					System.out.println("Character creation not yet implemented.");
+					Player player = createCharacter();
+					SaveLoad.saveGame(player);
+					runGame(player);
 					break;
 				case 2:
-					System.out.println("Save/Load not yet implemented.");
+					SaveLoad.listFiles();
+					int fileChoice = validIntPrompt("file number", SaveLoad.numFiles());
+					try {
+						Player player = SaveLoad.readSave(fileChoice - 1);
+					} catch {
+						System.out.println("Savefile not found. Your save data may be corrupted.");
+					}
+					runGame(player);
 					break;
 				case 3:
 					helpMenu();
@@ -38,6 +47,14 @@ public class RunGame {
 	
 	public static void runTest() {
 		System.out.println("No test scenario loaded.");
+	}
+	
+	public static void runGame(Player player) {
+		
+	}
+	
+	public static Player createCharacter() {
+		
 	}
 	
 	public static void helpMenu() {
