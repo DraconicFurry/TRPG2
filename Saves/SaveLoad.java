@@ -13,7 +13,7 @@ public class SaveLoad {
 	}
 	
 	public void saveGame(Creature player) {
-		File save = new File(player.getName() + ".txt");
+		File save = new File("SaveFiles/" + player.getName() + ".txt");
 		if (save.exists()) {
 			Scanner sc = new Scanner(save);
 			//Read necessary data from existing savefile
