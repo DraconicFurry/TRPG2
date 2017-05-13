@@ -31,4 +31,8 @@ public class Player extends Creature {
 			MP = MMP;
 		}
 	}
+	
+	public int getXP() {
+		return XP;
+	}
 }
