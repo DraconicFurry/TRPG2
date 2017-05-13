@@ -14,6 +14,10 @@ public class StackItem extends Item {
         return amount;
     }
     
+    public void add(int num) {
+        amount += num;
+    }
+    
     public void remove(int num) {
         amount -= num;   
     }
