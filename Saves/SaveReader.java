@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 import Helpers.Input;
 
-public class SaveLoad {
+public class SaveReader {
 	
 	public Creature readSave(String fileName) throws FileNotFoundException {
 		File toLoad = new File(fileName + ".txt");	
