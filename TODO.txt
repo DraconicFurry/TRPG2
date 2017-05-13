@@ -20,3 +20,9 @@ Possible Features to Implement
   Character Stats - Str, Int, Dex, etc.
   
   Weapon Classes - Sword, Bow, Staff, etc.
+    Class Proficiencies
+    
+  Multiple Armor types - Helmet, Chest, Arms, Legs, etc.
+    Accessories - Ring, Amulet, etc.
+    
+  Dungeons, scripted encounters
