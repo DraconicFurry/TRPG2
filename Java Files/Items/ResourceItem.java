@@ -1,3 +1,5 @@
+package Items;
+
 public class ResourceItem extends StackItem {
 
     public ResourceItem(String name, int value, int amount) {
