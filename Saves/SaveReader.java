@@ -5,7 +5,7 @@ import Helpers.Input;
 
 public class SaveLoad {
 	
-	public Creature readSave(File toLoad) {
+	public Creature readSave(String fileName) {
 		return new Creature("Test", 1, 50, 30);
 	}
 }
