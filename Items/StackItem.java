@@ -27,6 +27,6 @@ public class StackItem extends Item {
     }
     
     public String toString() {
-        return ("(Junk) " + getName() + ": " + getValue() + "g");
+        return ("(Junk) " + getName() + "x" + amount + ": " + getValue() + "g (" + (super.getValue * amount) + "g total)");
     }
 }   
