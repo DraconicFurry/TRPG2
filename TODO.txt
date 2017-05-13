@@ -2,8 +2,6 @@ Confirmed To-Do List
   
   Implement character creation dialogue
   
-  Implement main menu
-  
   Implement primary gameplay loop
   
   Implement Inventory class
@@ -11,6 +9,10 @@ Confirmed To-Do List
   Implement Armor class
   
   Implement use for ResourceItems
+  
+  Implement Save/Load
+  
+  Implement drop tables and monster lists
 
 
 Possible Features to Implement
