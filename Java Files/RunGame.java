@@ -3,6 +3,7 @@ import java.util.*;
 public class RunGame {
 	public static void main(String[] args) {
 		boolean quit = false;
+		System.out.println("TRPG2 initialized.\n");
 		while (!quit) {
 			System.out.println("1: New Character");
 			System.out.println("2: Load Character");
@@ -10,6 +11,7 @@ public class RunGame {
 			System.out.println("4: Quit");
 			System.out.println("5: Run Test Scenario");
 			int menuChoice = Input.validIntPrompt("menu item", 5);
+			System.out.println();
 			switch (menuChoice) {
 				case 1:
 					System.out.println("Character creation not yet implemented.");
@@ -27,11 +29,12 @@ public class RunGame {
 					runTest();
 					break;
 			}
+			System.out.println();
 		}
 	}
 	
 	public static void runTest() {
-	
+		System.out.println("No test scenario loaded.");
 	}
 	
 	public static void helpMenu() {
@@ -40,11 +43,21 @@ public class RunGame {
 			System.out.println("1: Combat");
 			System.out.println("2: Equipment");
 			System.out.println("3: Stats and Leveling");
-			System.out.println("4: Effects and Abilities");
+			System.out.println("4: Effects and Skills");
 			System.out.println("5: Return to Menu");
 			int menuChoice = Input.validIntPrompt("help topic", 5);
+			System.out.println();
 			switch (menuChoice) {
 				case 1:
+					System.out.println("Combat takes place in turns. First the player acts, then the player's allies act, then the enemies act.");
+					System.out.println("This cycle repeats until all enemies are killed, the player dies, or the player runs from combat.");
+					System.out.println("Each turn, the player will have the option of attacking an enemy, using a skill, using an item, or fleeing.");
+					System.out.println("Regular attacks deal moderate damage, target a single enemy, and consume no mana.");
+					System.out.println("Skills consume mana, but are more powerful than normal attacks, and some skills can heal or buff your team.");
+					System.out.println("Items have a variety of different effects, and are consumed upon use.");
+					System.out.println("If you attempt to run, you have a 50% chance to succeed. Failing to run will end your turn.");
+					System.out.println("If you successfully escape from combat, you will drop half the gold you earned in the battle.");
+					System.out.println("If you die, you lose all gold and XP earned since you last visited the tavern.");
 					break;
 				case 2:
 					break;
@@ -56,6 +69,7 @@ public class RunGame {
 					quit = true;
 					break;
 			}
+			System.out.println();
 		}
 	}
 }
