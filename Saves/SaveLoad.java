@@ -5,8 +5,9 @@ import Helpers.Input;
 
 public class SaveLoad {
 	
-	public Creature readSave(String fileName) throws FileNotFoundException {
-		File toLoad = new File(fileName + ".txt");
+	public Creature readSave(int fileNum) throws FileNotFoundException {
+		File[] saveFiles = new File("SaveFiles").listFiles();
+		File toLoad = saveFiles[fileNum];
 		Scanner sc = new Scanner(toLoad);
 		return new Creature("Test", 1, 50, 30);
 	}
@@ -21,5 +22,19 @@ public class SaveLoad {
 		save.createNewFile();
 		OutputStream out = new OutputStream(save);
 		//Write data to new file
+	}
+	
+	public void listFiles() {
+		File saveFolder = new File("SaveFiles");
+		File[] saveFiles = saveFolder.listFiles();
+		Scanner sc;
+		for (int i = 0; i < saveFiles.length; i++) {
+			sc = new Scanner(saveFiles[i]);
+			System.out.println((i + 1) + ": " + sc.next());
+		}
+	}
+	
+	public int numFiles() {
+		return new File("SaveFiles").listFiles().length();	
 	}
 }
