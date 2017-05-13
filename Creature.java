@@ -4,7 +4,6 @@ public class Creature {
 	
 	private String name;
 	private int level;
-	private int XP;
 	private int HP;
 	private int MHP;
 	public boolean isDead;
@@ -40,10 +39,6 @@ public class Creature {
 		return level;
 	}
 	
-	public int getXP() {
-		return XP;
-	}
-	
 	public int getHealth() {
 		return HP;
 	}
@@ -64,19 +59,6 @@ public class Creature {
 		MP += difference;
 		
 		if (MP > MMP) {
-			MP = MMP;
-		}
-	}
-	
-	private void levelUp() {
-		if (XP >= (level * 100)) {
-			XP -= level * 100;
-			level++;
-			//Increase stats
-			MHP += 50;
-			MMP += 25;
-			//Restore HP and MP
-			HP = MHP;
 			MP = MMP;
 		}
 	}
