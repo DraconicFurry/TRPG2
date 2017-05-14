@@ -75,5 +75,6 @@ public class Inventory {
                 i -= 1;
             }
         }
+        Collections.sort(inv);
     }
 }
