@@ -1,4 +1,3 @@
-package Saves;
 import java.util.*;
 import java.io.*;
 import Helpers.Input;
