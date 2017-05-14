@@ -5,9 +5,11 @@ import Consumables.*;
 public class Inventory {
 
     private Item[] inv;
+    private Armor[] army;
 
     public Inventory() {
         inv = new Item[10];
+        army = new Armory();
     }
 
     public void add(Item newItem) throws InventoryFullException {
