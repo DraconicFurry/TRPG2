@@ -1,3 +1,4 @@
+import Items.*;
 package Consumables
 
 public class HealConsumable extends Consumable {
