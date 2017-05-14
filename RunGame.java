@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.FileNotFoundException;
 import Helpers.*;
 import Items.*;
 
@@ -22,13 +23,13 @@ public class RunGame {
 					break;
 				case 2:
 					SaveLoad.listFiles();
-					int fileChoice = validIntPrompt("file number", SaveLoad.numFiles());
+					int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
 					try {
-						Player player = SaveLoad.readSave(fileChoice - 1);
+						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
 					} catch {
 						System.out.println("Savefile not found. Your save data may be corrupted.");
 					}
-					runGame(player);
+					runGame(loadPlayer);
 					break;
 				case 3:
 					helpMenu();
@@ -62,7 +63,7 @@ public class RunGame {
 		System.out.println("2: " + rangePhys);
 		System.out.println("3: " + meleeMagi);
 		System.out.println("4: " + rangeMagi);
-		int wepChoice = validIntPrompt("weapon choice", 4);
+		int wepChoice = Input.validIntPrompt("weapon choice", 4);
 		Weapon wep;
 		switch (wepChoice) {
 			case 1:
