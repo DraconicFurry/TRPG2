@@ -1,3 +1,5 @@
+package Items;
+
 public class InventoryFullException extends Exception {
 
 	public InventoryFullException() {
