@@ -11,7 +11,7 @@ public class SaveLoad {
 		return new Player("Test", 1, 50, 30);
 	}
 	
-	public void saveGame(Creature player) {
+	public void saveGame(Creature player) throws FileNotFoundException, IOException {
 		File save = new File("SaveFiles/" + player.getName() + ".txt");
 		if (save.exists()) {
 			Scanner sc = new Scanner(save);
@@ -19,11 +19,11 @@ public class SaveLoad {
 			save.delete();
 		}
 		save.createNewFile();
-		OutputStream out = new OutputStream(save);
+		PrintStream out = new PrintStream(save);
 		//Write data to new file
 	}
 	
-	public void listFiles() {
+	public void listFiles() throws FileNotFoundException {
 		File saveFolder = new File("SaveFiles");
 		File[] saveFiles = saveFolder.listFiles();
 		Scanner sc;
@@ -33,7 +33,7 @@ public class SaveLoad {
 		}
 	}
 	
-	public int numFiles() {
-		return new File("SaveFiles").listFiles().length();	
+	public int numFiles() throws FileNotFoundException {
+		return new File("SaveFiles").listFiles().length;	
 	}
 }
