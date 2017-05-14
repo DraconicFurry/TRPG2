@@ -42,7 +42,7 @@ public abstract class Item implements Comparable<Item> {
         } else if (this.getValue() != other.getValue()) {
             return other.getValue() - this.getValue();
         } else if (!this.getName().equals(other.getName())) {
-            return ((this.getName().charAt(0)) - (other.getName().charAt(0)))
+            return ((this.getName().charAt(0)) - (other.getName().charAt(0)));
         } else {
             return 0;
         }
