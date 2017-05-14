@@ -8,6 +8,6 @@ public class Shoulderpads extends Armor {
     }
     
     public String toString() {
-        return ("(Shoulderpads) " + getName() + ": " + getDefense() + " armor, " + getValue() + "g");
+        return ("(Shoulderpads) " + getName() + ", " + getDefense() + " armor, " + getValue() + "g");
     }    
 }    
