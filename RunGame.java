@@ -34,10 +34,10 @@ public class RunGame {
 					int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
 					try {
 						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
-					} catch {
+						runGame(loadPlayer);
+					} catch (Exception ex) {
 						System.out.println("Savefile not found. Your save data may be corrupted.");
 					}
-					runGame(loadPlayer);
 					break;
 				case 3:
 					helpMenu();
@@ -90,7 +90,7 @@ public class RunGame {
 		Player player = new Player(name, 1, 50, 30);
 		try {
 			player.equipWep(wep);
-		} catch {
+		} catch (Exception ex) {
 			System.out.println("ERR: Inventory Creation Failed");	
 		}
 		return player;
