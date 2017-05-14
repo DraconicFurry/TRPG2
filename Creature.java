@@ -14,7 +14,9 @@ public class Creature {
 	
 	public Creature(String name, int level, int HP, int MP, Weapon wep) {
 		this.level = level;
+		this.HP = HP;
 		this.MHP = HP;
+		this.MP = MP;
 		this.MMP = MP;
 		isDead = false;
 		this.wep = wep;
@@ -22,7 +24,9 @@ public class Creature {
 	
 	public Creature(String name, int level, int HP, int MP) {
 		this.level = level;
+		this.HP = HP;
 		this.MHP = HP;
+		this.MP = MP;
 		this.MMP = MP;
 		isDead = false;
 		this.wep = new Weapon("Paws", 0, 1, 1, false, false);
@@ -70,6 +74,10 @@ public class Creature {
 			HP = 0;
 			isDead = true;
 		}
+	}
+	
+	public String toString() {
+		return (name + ": " + HP + "/" + MHP + "    " + MP + "/" + MMP	
 	}
 }
 
