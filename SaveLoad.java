@@ -4,7 +4,7 @@ import Helpers.Input;
 
 public class SaveLoad {
 	
-	public Player readSave(int fileNum) throws FileNotFoundException {
+	public static Player readSave(int fileNum) throws FileNotFoundException {
 		File[] saveFiles = new File("SaveFiles").listFiles();
 		File toLoad = saveFiles[fileNum];
 		Scanner sc = new Scanner(toLoad);
