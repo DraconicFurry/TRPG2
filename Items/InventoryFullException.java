@@ -1,4 +1,4 @@
-public class InventoryFullException {
+public class InventoryFullException extends Exception {
 
 	public InventoryFullException() {
 	
