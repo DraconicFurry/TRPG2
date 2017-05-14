@@ -1,3 +1,5 @@
+package Consumables;
+
 public abstract class Consumable extends StackItem {
 
     private int consumeType;
