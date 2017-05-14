@@ -18,19 +18,20 @@ public class Armory;
             Armor temp = army[0];
             army[0] = newArmor;
             return temp;
-        } (newArmor instanceof Shoulderpads) {
+        } else if (newArmor instanceof Shoulderpads) {
             Armor temp = army[1];
             army[1] = newArmor;
             return temp;
-        } (newArmor instanceof Chestpiece) {
+        } else if (newArmor instanceof Chestpiece) {
             Armor temp = army[2];
             army[2] = newArmor;
             return temp;
-        } (newArmor instanceof Leggings) {
+        } else {
             Armor temp = army[3];
             army[3] = newArmor;
             return temp;
         }
+    }
         
     public int totalDefense() {
         int sum = 0
