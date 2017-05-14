@@ -1,3 +1,5 @@
+package Consumables;
+
 public class SummonConsumable extends Consumable {
 
     private Creature ally;
