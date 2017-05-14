@@ -1,10 +1,6 @@
 Confirmed To-Do List
   
-  Implement character creation dialogue
-  
   Implement primary gameplay loop
-  
-  Implement Inventory class
   
   Implement Armor class
   
