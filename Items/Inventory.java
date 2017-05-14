@@ -1,5 +1,6 @@
 package Items;
 import java.util.*;
+import Consumables.*;
 
 public class Inventory {
 
