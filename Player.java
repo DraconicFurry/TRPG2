@@ -20,7 +20,12 @@ public class Player extends Creature {
 		this.inv = inv;
 	}
 	
-	private void levelUp() {
+	public void equipWep(Weapon wep) throws InventoryFullException {
+		inv.add(this.wep);
+		this.wep = wep;
+	}
+	
+	public void levelUp() {
 		if (XP >= (level * 100)) {
 			XP -= level * 100;
 			level++;
