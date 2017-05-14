@@ -1,4 +1,5 @@
 import java.util.*;
+import Items.*;
 
 public class Player extends Creature {
 
@@ -40,7 +41,7 @@ public class Player extends Creature {
 	
 	public void reward(int gold, int XP) {
 		this.gold += gold;
-		this.XP += XP
+		this.XP += XP;
 		levelUp();
 	}
 	
