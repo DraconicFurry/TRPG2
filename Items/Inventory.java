@@ -1,3 +1,5 @@
+package Items;
+
 public class Inventory {
 
     private Item[] inv;
@@ -19,7 +21,7 @@ public class Inventory {
         }
         
         if (!added) {
-            throw new InventoryFullException;
+            throw new InventoryFullException();
         }
         
     }
@@ -33,7 +35,7 @@ public class Inventory {
             inv[index].remove(num); 
             
             if (inv[index].getAmount < 0) {
-                throw new InsufficentItemException;
+                throw new InsufficentItemException();
             } else if (inv[index].getAmount = 0) {
                 inv[index] = null;    
             }
