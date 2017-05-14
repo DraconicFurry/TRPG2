@@ -13,7 +13,7 @@ public abstract class Armor extends Item {
         return namel
     }
     
-    public int getValue*( {
+    public int getValue() {
         return value;
     } 
     
