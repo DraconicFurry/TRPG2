@@ -1,3 +1,4 @@
+import Items.*;
 package Consumables;
 
 public abstract class Consumable extends StackItem {
