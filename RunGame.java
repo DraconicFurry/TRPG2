@@ -18,11 +18,19 @@ public class RunGame {
 			switch (menuChoice) {
 				case 1:
 					Player player = createCharacter();
-					SaveLoad.saveGame(player);
+					try {
+						SaveLoad.saveGame(player);
+               		} catch (Exception ex) {
+                  		System.out.println("Savefile creation failed.");
+               		}
 					runGame(player);
 					break;
 				case 2:
-					SaveLoad.listFiles();
+					try {
+					   	SaveLoad.listFiles();
+              		} catch (FileNotFoundException ex) {
+                  		System.out.println("No savefiles found.");
+               		}
 					int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
 					try {
 						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
