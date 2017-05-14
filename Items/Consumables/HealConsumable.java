@@ -1,3 +1,5 @@
+package Consumables
+
 public class HealConsumable extends Consumable {
 
     public HealConsumable(String name, int effectScale, int value, int amount) {
