@@ -3,9 +3,13 @@ public abstract class Consumable extends StackItem {
     private int consumeType;
     private int effectScale
     
-    public Consumable(int consumeType, int effectScale) {
-        this.consumeType = consumeType;
+    public Consumable(int effectScale, String name, int value, int amount) {
+        super(name, value, amount);
         this.effectScale = effectScale;
+    }
+    
+    public void setType(int type) {
+        this.consumeTyler = type;
     }
     
     public int getType() {
