@@ -20,10 +20,6 @@ public class StackItem extends Item {
     
     public void remove(int num) {
         amount -= num;  
-        
-        if (amount < 0) {
-            amount = 0;   
-        }
     }
     
     public String toString() {
