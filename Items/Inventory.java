@@ -18,6 +18,8 @@ public class Inventory {
             }
         }
         
+        sortInv();
+        
         if (!added) {
             throw new InventoryFullException;
         }
