@@ -14,7 +14,8 @@ public class Inventory {
         for (int i = 0; i < inv.length; i++) {
             if (inv[i].getName() == newItem.getName() && inv[i] instanceof StackItem) {
                 StackItem si = (StackItem)inv[i];
-                si.add((StackItem)newItem.getAmount());
+                StackItem nsi = (StackItem)newItem;
+                si.add(nsi.getAmount());
                 added = true;
             } else if (inv[i] == null) {
                 inv[i] = newItem;
@@ -91,8 +92,8 @@ public class Inventory {
             Collections.sort(invList);
         } catch (Exception ex) {
         }
-        for int k = 0; k < inv.length; k++) {
-            int[i] = invList.get(i);    
+        for (int i = 0; i < inv.length; i++) {
+            inv[i] = invList.get(i);    
         }
     }
 }
