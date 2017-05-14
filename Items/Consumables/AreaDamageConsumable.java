@@ -1,3 +1,5 @@
+package Consumables;
+
 public class AreaDamageConsumable extends Consumable {
     
     public AreaDamageConsumable(String name, int effectScale, int value, int amount);
