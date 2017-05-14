@@ -7,6 +7,6 @@ public class ResourceItem extends StackItem {
     }
     
     public String toString() {
-        return ("(Resource Item) " + getName() + ": " + getValue() + "g");
+        return ("(Resource Item) " + getName() + "x" + getAmount() + ": " + getValue() + "g (" + (getValue() * getAmount()) + "g total)");
     }
 }
