@@ -1,6 +1,6 @@
 public class HealConsumable extends Consumable {
 
-    public HealConsumable(int effectScale, String name, int value, int amount) {
+    public HealConsumable(String name, int effectScale, int value, int amount) {
         super(effectScale, name, value, amount);
         setType(3);
     }
