@@ -1,3 +1,4 @@
+import java.util.*;
 package Items;
 
 public class Inventory {
@@ -8,11 +9,12 @@ public class Inventory {
         inv = new Item[10];
     }
 
-    public void add(Item newItem) {
+    public void add(Item newItem) throws InventoryFullException {
         boolean added = false;
         for (int i = 0; i < inv.length; i++) {
-            if (inv[i].getName == newItem.getName && inv[i] instanceof StackItem) {
-                inv[i].add(newItem.getAmount());
+            if (inv[i].getName() == newItem.getName() && inv[i] instanceof StackItem) {
+                StackItem si = (StackItem)inv[i];
+                si.add((StackItem)newItem.getAmount());
                 added = true;
             } else if (inv[i] == null) {
                 inv[i] = newItem;
@@ -26,17 +28,22 @@ public class Inventory {
         
     }
     
-    public int trash(int index, int num) {
+    public int trash(int index, int num) throws InsufficientItemException {
+        int returnValue = 0;
         index -= 1;
-        
-        int returnValue = inv[index].getValue() * num;
-        
-        if (inv[index] instanceof StackItem) {
-            inv[index].remove(num); 
+       
+        try {
+            returnValue = inv[index].getValue() * num;
+        } catch (Exception ex) {
+        }    
             
-            if (inv[index].getAmount < 0) {
-                throw new InsufficentItemException();
-            } else if (inv[index].getAmount = 0) {
+        if (inv[index] instanceof StackItem) {
+            StackItem si = (StackItem)inv[index];
+            si.remove(num); 
+            
+            if (si.getAmount() < 0) {
+                throw new InsufficientItemException();
+            } else if (si.getAmount() == 0) {
                 inv[index] = null;    
             }
         } else {
@@ -47,7 +54,7 @@ public class Inventory {
         return returnValue;
     }
     
-    public String display() {
+    public void display() {
         for (int i = 0; i < inv.length; i++) {
             if (inv[i] == null) {
                 System.out.println((i + 1) + ": None");
@@ -77,10 +84,15 @@ public class Inventory {
                 i -= 1;
             }
         }
+        
+        List<Item> invList = Arrays.asList(inv);   
+        
         try {
-            Collections.sort(inv);
+            Collections.sort(invList);
         } catch (Exception ex) {
-            return;
+        }
+        for int k = 0; k < inv.length; k++) {
+            int[i] = invList.get(i);    
         }
     }
 }
