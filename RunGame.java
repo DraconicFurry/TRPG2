@@ -6,7 +6,7 @@ import Saves.*;
 public class RunGame {
 	public static void main(String[] args) {
 		boolean quit = false;
-		System.out.println("Fursade initialized.\n");
+		System.out.println("TRPG2 initialized.\n");
 		while (!quit) {
 			System.out.println("1: New Character");
 			System.out.println("2: Load Character");
@@ -50,11 +50,42 @@ public class RunGame {
 	}
 	
 	public static void runGame(Player player) {
-		
+		System.out.println("This is where I would run the game, if I had written that code yet.");
 	}
 	
 	public static Player createCharacter() {
-		
+		String name = Input.strPrompt("character name");
+		Weapon meleePhys = new Weapon("Trainee's Sword", 0, 5, 10, false, false);
+		Weapon rangePhys = new Weapon("Recruit's Bow", 0, 5, 10, true, false);
+		Weapon meleeMagi = new Weapon("Conjured Dagger", 0, 5, 10, false, true);
+		Weapon rangeMagi = new Weapon("Apprentice's Staff", 0, 5, 10, true, true);
+		System.out.println("1: " + meleePhys);
+		System.out.println("2: " + rangePhys);
+		System.out.println("3: " + meleeMagi);
+		System.out.println("4: " + rangeMagi);
+		int wepChoice = validIntPrompt("weapon choice", 4);
+		Weapon wep;
+		switch (wepChoice) {
+			case 1:
+				wep = meleePhys;
+				break;
+			case 2:
+				wep = rangePhys;
+				break;
+			case 3:
+				wep = meleeMagi;
+				break;
+			case 4:
+				wep = rangeMagi;
+				break;
+		}
+		Player player = new Player(name, 1, 50, 30);
+		try {
+			player.equipWep(wep);
+		} catch {
+			System.out.println("ERR: Inventory Creation Failed");	
+		}
+		return player;
 	}
 	
 	public static void helpMenu() {
