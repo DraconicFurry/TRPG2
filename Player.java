@@ -1,17 +1,20 @@
 import java.util.*;
 import Items.*;
+import Armor.*;
 
 public class Player extends Creature {
 
 	private int gold;
 	private int XP;
 	private Inventory inv;
+	private int defense;
 	
 	public Player(String name, int level, int HP, int MP) {
 		super(name, level, HP, MP);
 		gold = 0;
 		XP = 0;
 		inv = new Inventory();
+		defense = totalDefene();
 	}
 	
 	public Player(String name, int level, int XP, int HP, int MP, Weapon wep, Inventory inv, int gold) {
@@ -24,6 +27,10 @@ public class Player extends Creature {
 	public void equipWep(Weapon wep) throws InventoryFullException {
 		inv.add(this.wep);
 		this.wep = wep;
+	}
+	
+	public int totalDefense() {
+		return inv.army.totalDefense();
 	}
 	
 	public void levelUp() {
