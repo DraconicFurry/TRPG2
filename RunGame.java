@@ -31,8 +31,8 @@ public class RunGame {
               		} catch (FileNotFoundException ex) {
                   		System.out.println("No savefiles found.");
                		}
-					int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
 					try {
+						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
 						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
 						runGame(loadPlayer);
 					} catch (Exception ex) {
