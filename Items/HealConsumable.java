@@ -1,5 +1,9 @@
 public class HealConsumable extends Consumable {
 
+    public HealConsumable(int effectScale) {
+        super(effectScale);
+        setType(3);
+    }
     public void use(Player player, List allies, List enemies) {
         int target = 0;
         
