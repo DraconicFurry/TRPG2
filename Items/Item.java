@@ -22,7 +22,9 @@ public abstract class Item implements Comparable<Item> {
         int itemType = 0, otherType = 0;
         
         if (this instanceof Weapon) {
-            itemType = 3;
+            itemType = 4;
+        } else if (this instanceof Consumable) {
+            inteType = 3;
         } else if (this instanceof ResourceItem) {
             itemType = 2;
         } else if (this instanceof StackItem) {
@@ -30,6 +32,8 @@ public abstract class Item implements Comparable<Item> {
         }
         
         if (other instanceof Weapon) {
+            otherType = 4;
+        } else if (other instanceof Consumable) {
             otherType = 3;
         } else if (other instanceof ResourceItem) {
             otherType = 2;
@@ -38,7 +42,10 @@ public abstract class Item implements Comparable<Item> {
         }
         
         if (itemType != otherType) {
-            return otherType - itemType;   
+            return otherType - itemType;
+            if (itemType == 3) {
+                return (Consumable)(this.getType()) - (Consumable)(other.getType());
+            }
         } else if (this.getValue() != other.getValue()) {
             return other.getValue() - this.getValue();
         } else if (!this.getName().equals(other.getName())) {
