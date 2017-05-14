@@ -3,7 +3,7 @@ public abstract class Consumable extends StackItem {
     private int consumeType;
     private int effectScale
     
-    public Consumable(int effectScale, String name, int value, int amount) {
+    public Consumable(String name, int effectScale, int value, int amount) {
         super(name, value, amount);
         this.effectScale = effectScale;
     }
