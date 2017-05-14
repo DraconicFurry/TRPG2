@@ -1,4 +1,4 @@
-public class T3Consumable extends Consumable {
+public class HealConsumable extends Consumable {
 
     public void use(Player player, List allies, List enemies) {
         int target = 0;
