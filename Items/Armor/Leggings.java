@@ -8,6 +8,6 @@ public class Leggings extends Armor {
     }
     
     public String toString() {
-        return ("(Leggings) " + getName() + ": " + getDefense() + " armor");
+        return ("(Leggings) " + getName() + ": " + getDefense() + " armor, " + getValue() + "g");
     }   
 }
