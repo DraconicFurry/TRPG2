@@ -6,8 +6,8 @@ public class SummonConsumable extends Consumable {
 
     private Creature ally;
     
-    public SummonConsumable(String name, int effectLevel, String creatureName, int level, int HP, int MP, Weapon wep) {
-        super(effectLevel, name);
+    public SummonConsumable(String name String creatureName, int level, int HP, int MP, Weapon wep) {
+        super(1, name);
         setType(4);
         ally = new Creature(creatureName, level, HP, MP, wep);
     }
