@@ -4,11 +4,11 @@ import Helpers.Input;
 
 public class SaveLoad {
 	
-	public Creature readSave(int fileNum) throws FileNotFoundException {
+	public Player readSave(int fileNum) throws FileNotFoundException {
 		File[] saveFiles = new File("SaveFiles").listFiles();
 		File toLoad = saveFiles[fileNum];
 		Scanner sc = new Scanner(toLoad);
-		return new Creature("Test", 1, 50, 30);
+		return new Player("Test", 1, 50, 30);
 	}
 	
 	public void saveGame(Creature player) {
