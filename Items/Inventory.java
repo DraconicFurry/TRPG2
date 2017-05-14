@@ -18,8 +18,6 @@ public class Inventory {
             }
         }
         
-        sortInv();
-        
         if (!added) {
             throw new InventoryFullException;
         }
@@ -77,6 +75,10 @@ public class Inventory {
                 i -= 1;
             }
         }
-        Collections.sort(inv);
+        try {
+            Collections.sort(inv);
+        } catch (Exception ex) {
+            return;
+        }
     }
 }
