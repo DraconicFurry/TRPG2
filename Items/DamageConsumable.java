@@ -1,6 +1,6 @@
 public class DamageConsumable extends Consumable {
   
-    public DamageConsumable(int effectScale, String name, int value, int amount) {
+    public DamageConsumable(String name, int effectScale, int value, int amount) {
         super(effectScale, name, value, amount);
         setType(1);
     }
