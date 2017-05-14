@@ -23,6 +23,6 @@ public class StackItem extends Item {
     }
     
     public String toString() {
-        return ("(Junk) " + getName() + "x" + amount + ": " + getValue() + "g (" + (getValue() * amount) + "g total)");
+        return ("(Junk) " + getName() + "x" + amount + ", " + getValue() + "g (" + (getValue() * amount) + "g total)");
     }
 }   
