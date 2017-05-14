@@ -16,8 +16,6 @@ public abstract class Consumable extends StackItem {
         return effectScale;
     }
    
-    public void use();
-    
     public String toString() {
         return ("(Consumable Type " + consumeType + ") " + getname() + "x" + getAmount() + ": " + getValue() + "g (" + (getValue() * amount) + "g total)");
     }
