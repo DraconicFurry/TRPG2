@@ -9,7 +9,7 @@ public abstract class Consumable extends StackItem {
     }
     
     public void setType(int type) {
-        this.consumeTyler = type;
+        this.consumeType = type;
     }
     
     public int getType() {
