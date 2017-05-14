@@ -1,6 +1,6 @@
 public class AreaDamageConsumable extends Consumable {
     
-    public AreaDamageConsumable(int effectScale, String name, int value, int amount);
+    public AreaDamageConsumable(String name, int effectScale, int value, int amount);
         super(effectScale, name, value, amount);
         setType(2);
     }
