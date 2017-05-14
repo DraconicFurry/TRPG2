@@ -8,6 +8,6 @@ public class Chestpiece extends Armor {
     }
     
     public String toString() {
-        return ("(Chestpiece) " + getName() + ": " + getDefense() + " armor");
+        return ("(Chestpiece) " + getName() + ", " + getDefense() + " armor, " + getValue() + "g");
     }    
 }
