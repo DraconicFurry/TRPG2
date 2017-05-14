@@ -58,6 +58,17 @@ public class Inventory {
         return returnValue;
     }
     
+    public void equipArmor(int index) {
+        int choice = Input.intPrompt("armor to equip");
+        
+        if (inv[choice] instanceof Helmet || inv[choice] instanceof Shoulderpads || inv[choice] instanceof Chestpiece || inv[choice] instanceof Leggings) {
+            Armor temp = army.equip(inv[choice]);
+            inv[choice] = temp;
+        } else {
+            throw new InsufficientItemException();
+        }
+    }
+    
     public void display() {
         for (int i = 0; i < inv.length; i++) {
             if (inv[i] == null) {
