@@ -3,14 +3,14 @@ import Items.*;
 
 public class Creature {
 	
-	private String name;
-	private int level;
-	private int HP;
-	private int MHP;
-	public boolean isDead;
-	private int MP;
-	private int MMP;
-	private Weapon wep;
+	String name;
+	int level;
+	int HP;
+	int MHP;
+	boolean isDead;
+	int MP;
+	int MMP;
+	Weapon wep;
 	
 	public Creature(String name, int level, int HP, int MP, Weapon wep) {
 		this.level = level;
