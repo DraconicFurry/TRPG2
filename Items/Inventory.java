@@ -32,8 +32,10 @@ public class Inventory {
         if (inv[index] instanceof StackItem) {
             inv[index].remove(num); 
             
-            if (inv[index].getAmount <= 0) {
-                inv[index] = null;
+            if (inv[index].getAmount < 0) {
+                throw new InsufficentItemException;
+            } else if (inv[index].getAmount = 0) {
+                inv[index] = null;    
             }
         } else {
             inv[index] = null;
