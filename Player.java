@@ -4,19 +4,20 @@ public class Player extends Creature {
 
 	private int gold;
 	private int XP;
-	//private Inventory inv;
+	private Inventory inv;
 	
 	public Player(String name, int level, int HP, int MP) {
 		super(name, level, HP, MP);
 		gold = 0;
-		//inv = new Inventory();
+		XP = 0;
+		inv = new Inventory();
 	}
 	
 	public Player(String name, int level, int XP, int HP, int MP, Weapon wep, Inventory inv, int gold) {
 		super(name, level, HP, MP, wep);
-		this.XP = XP;
 		this.gold = gold;
-		//this.inv = inv;
+		this.XP = XP;
+		this.inv = inv;
 	}
 	
 	private void levelUp() {
