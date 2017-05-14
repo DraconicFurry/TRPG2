@@ -1,5 +1,5 @@
-import java.util.*;
 package Items;
+import java.util.*;
 
 public class Inventory {
 
