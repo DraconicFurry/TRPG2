@@ -86,6 +86,9 @@ public class RunGame {
 			case 4:
 				wep = rangeMagi;
 				break;
+			default:
+				wep = meleePhys;
+				break;
 		}
 		Player player = new Player(name, 1, 50, 30);
 		try {
