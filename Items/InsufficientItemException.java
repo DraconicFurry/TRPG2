@@ -1,4 +1,4 @@
-public class InsufficientItemException {
+public class InsufficientItemException extends Exception {
 
 	public InsufficientItemException() {
 	
