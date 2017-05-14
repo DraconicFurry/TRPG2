@@ -1,4 +1,4 @@
-public class T1Consumable extends Consumable {
+public class DamageConsumable extends Consumable {
   
     public void use(Player player, List allies, List enemies) {
         int choice = Input.validIntPrompt("enemy target", enemies.size());
