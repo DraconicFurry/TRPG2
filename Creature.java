@@ -1,5 +1,5 @@
 import java.util.*;
-import Items.*;
+import items.*;
 
 public class Creature {
 	
