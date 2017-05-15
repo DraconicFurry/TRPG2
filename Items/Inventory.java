@@ -16,7 +16,7 @@ public class Inventory {
         int i = 0;
         boolean added = false;
         while (!added && i < inv.length) {
-            if (inv[i].getName() == newItem.getName() && inv[i] instanceof StackItem) {
+            if (inv[i] instanceof StackItem && inv[i].getName() == newItem.getName()) {
                 StackItem si = (StackItem)inv[i];
                 StackItem nsi = (StackItem)newItem;
                 si.add(nsi.getAmount());
