@@ -13,10 +13,6 @@ public abstract class Armor extends Item {
         return name;
     }
     
-    public int getValue() {
-        return value;
-    } 
-    
     public int getDefense() {
         return defense;
     }
