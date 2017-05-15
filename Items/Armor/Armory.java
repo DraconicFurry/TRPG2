@@ -1,12 +1,12 @@
 import Items.*;
 package Armor;
 
-public class Armory; 
+public class Armory {
 
     private Armor[] army;
     
     public Armory() {
-        army = new Armor[4]
+        army = new Armor[4];
         army[0] = new Helmet("Starter Helmet", 1, 10);
         army[1] = new Shoulderpads("Starter Shoulderpads", 1, 15);
         army[2] = new Chestpiece("Starter Chestpiece", 1, 20);
@@ -34,7 +34,7 @@ public class Armory;
     }
         
     public int totalDefense() {
-        int sum = 0
+        int sum = 0;
         for (int i = 0; i < 4; i++) {
             sum += army[i].getDefense();
         }
