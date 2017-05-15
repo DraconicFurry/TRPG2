@@ -1,6 +1,9 @@
 package items;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
+import meta.*;
 import java.util.*;
-import consumables.*;
 
 public class Inventory {
 
