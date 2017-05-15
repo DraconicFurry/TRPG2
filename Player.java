@@ -30,7 +30,7 @@ public class Player extends Creature {
 	}
 	
 	public int totalDefense() {
-		return inv.army.totalDefense();
+		return inv.getArmory().totalDefense();
 	}
 	
 	public void levelUp() {
