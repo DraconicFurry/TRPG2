@@ -1,4 +1,7 @@
 package items.armor;
+import items.*;
+import items.consumables.*;
+import meta.*;
 
 public class Chestpiece extends Armor {
 
