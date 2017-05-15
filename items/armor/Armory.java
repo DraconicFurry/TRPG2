@@ -1,5 +1,9 @@
 package items.armor;
 import com.*;
+import items.*;
+import items.consumables.*;
+import helpers.*;
+
 
 public class Armory {
 
@@ -15,7 +19,14 @@ public class Armory {
         this.owner = owner;
     }
     
-    public Armor equip(Armor newArmor) {
+    public Armor equip(Armor newArmor) throws InsufficientItemException {
+        int index = 0;
+        if (Input.searchName(owner.inv.getInv(), newArmor.getName()) == -1) {
+            throw new InsufficientItemException();
+        } else {
+            index = Input.searchName(owner.inv.getInv(), newArmor.getName());
+        }
+        
         if (newArmor instanceof Helmet) {
             Armor temp = army[0];
             army[0] = newArmor;
@@ -32,7 +43,7 @@ public class Armory {
             Armor temp = army[3];
             army[3] = newArmor;
             return temp;
-        }
+        } 
     }
         
     public int totalDefense() {

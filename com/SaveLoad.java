@@ -1,7 +1,6 @@
 package com;
 import java.util.*;
 import java.io.*;
-import helpers.Input;
 
 public class SaveLoad {
 	

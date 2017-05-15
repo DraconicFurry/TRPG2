@@ -6,9 +6,9 @@ import helpers.*;
 
 public class Player extends Creature {
 
-	private int gold;
-	private int XP;
-	Inventory inv;
+	int gold;
+	int XP;
+	public Inventory inv;
 	Armory army;
 	int defense;
 	
@@ -39,16 +39,13 @@ public class Player extends Creature {
       		inv.add(temp);
 	}
 	
-	    
-    	public void equipArmor(int index) throws IllegalArgumentException {
-        	if (inv.getInv()[index] instanceof Helmet || inv.getInv()[index] instanceof Shoulderpads || 
-        		inv.getInv()[index] instanceof Chestpiece || inv.getInv()[index] instanceof Leggings) {
-            		Armor temp = army.equip((Armor)inv.getInv()[index]);
-            		inv.getInv()[index] = temp;
-        	} else {
-            		throw new IllegalArgumentException();
-        	}
-    	}
+    public void equipArmor(int index) throws IllegalArgumentException, InsufficientItemException {
+        if (inv.getInv()[index] instanceof Helmet || inv.getInv()[index] instanceof Shoulderpads || 
+        	inv.getInv()[index] instanceof Chestpiece || inv.getInv()[index] instanceof Leggings) {
+            	Armor temp = army.equip((Armor)inv.getInv()[index]);
+            	inv.getInv()[index] = temp;
+        }
+    }
 	
 	public int totalDefense() {
 		return army.totalDefense();

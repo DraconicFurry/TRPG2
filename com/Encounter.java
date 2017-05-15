@@ -1,7 +1,6 @@
 package com;
 import java.util.*;
 import helpers.Input;
-import items.*;
 
 public class Encounter {
   

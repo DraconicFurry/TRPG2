@@ -1,7 +1,7 @@
 package items.consumables;
-import java.util.*;
 import items.*;
 import com.*;
+import java.util.*;
 
 public abstract class Consumable extends StackItem {
 

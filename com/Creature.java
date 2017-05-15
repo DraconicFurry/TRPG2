@@ -1,6 +1,10 @@
 package com;
 //import java.util.*;
 import items.*;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
+import java.util.*;
 
 public class Creature {
 	

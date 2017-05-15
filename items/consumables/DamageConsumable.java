@@ -2,7 +2,6 @@ package items.consumables;
 import com.*;
 import java.util.*;
 import helpers.Input;
-
 public class DamageConsumable extends Consumable {
   
     public DamageConsumable(String name, int effectScale, int value, int amount) {

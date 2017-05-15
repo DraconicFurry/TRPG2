@@ -1,5 +1,5 @@
 package items.consumables;
-import com.*;
+import com.*; 
 import java.util.*;
 import helpers.Input;
 

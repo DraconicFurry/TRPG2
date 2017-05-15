@@ -1,4 +1,7 @@
 package items;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
 import java.util.*;
 
 public class Inventory {
@@ -8,7 +11,11 @@ public class Inventory {
     public Inventory() {
         inv = new Item[10];
     }
-
+    
+    public Item[] getInv() {
+      return inv;
+    }    
+    
     public void add(Item newItem) throws InventoryFullException {
         int i = 0;
         boolean added = false;
@@ -30,10 +37,6 @@ public class Inventory {
         }
         
     }
-    
-    public Item[] getInv() {
-      return inv;
-    }    
     
     public int trash(int index, int num) throws InsufficientItemException {
         int returnValue = 0;
