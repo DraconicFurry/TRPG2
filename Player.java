@@ -9,7 +9,7 @@ public class Player extends Creature {
 
 	private int gold;
 	private int XP;
-	Inventory inv;
+	public Inventory inv;
 	int defense;
 	
 	public Player(String name, int level, int HP, int MP) {
