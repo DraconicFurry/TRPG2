@@ -1,6 +1,6 @@
 package items;
 import java.util.*;
-import Consumables.*;
+import consumables.*;
 
 public class Inventory {
 
@@ -106,6 +106,6 @@ public class Inventory {
     }
     
     public Armory getArmory() {
-        return army   
+        return army;  
     }
 }
