@@ -1,4 +1,8 @@
 package items.consumables;
+import items.*;
+import items.armor.*;
+import meta.*;
+import helpers.*;
 
 public class HealConsumable extends Consumable {
 
