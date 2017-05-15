@@ -43,9 +43,6 @@ public abstract class Item implements Comparable<Item> {
         
         if (itemType != otherType) {
             return otherType - itemType;
-            if (itemType == 3) {
-                return (Consumable)(this.getType()) - (Consumable)(other.getType());
-            }
         } else if (this.getValue() != other.getValue()) {
             return other.getValue() - this.getValue();
         } else if (!this.getName().equals(other.getName())) {
