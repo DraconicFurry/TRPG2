@@ -39,9 +39,9 @@ public class Player extends Creature {
     	public void equipArmor(int index) {
         	int choice = Input.intPrompt("armor to equip");
         
-        	if (inv[choice] instanceof Helmet || inv[choice] instanceof Shoulderpads || inv[choice] instanceof Chestpiece || inv[choice] instanceof Leggings) {
+        	if (inv.getInv()[choice] instanceof Helmet || inv.getInv()[choice] instanceof Shoulderpads || inv.getInv()[choice] instanceof Chestpiece || inv.getInv()[choice] instanceof Leggings) {
             		Armor temp = army.equip((Armor)inv[choice]);
-            		inv[choice] = temp;
+            		inv.getInv()[choice] = temp;
         	} else {
             		throw new InsufficientItemException();
         	}
