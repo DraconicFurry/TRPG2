@@ -1,4 +1,4 @@
-package Helpers;
+package helpers;
 import java.util.*;
 
 public class Input {
