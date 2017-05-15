@@ -1,6 +1,4 @@
-import Items.*;
-import TRPG2.*;
-package Consumables;
+package items.consumables;
 
 public class SummonConsumable extends Consumable {
 
