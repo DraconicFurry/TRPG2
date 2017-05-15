@@ -24,7 +24,7 @@ public abstract class Item implements Comparable<Item> {
         if (this instanceof Weapon) {
             itemType = 4;
         } else if (this instanceof Consumable) {
-            inteType = 3;
+            itemType = 3;
         } else if (this instanceof ResourceItem) {
             itemType = 2;
         } else if (this instanceof StackItem) {
