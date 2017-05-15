@@ -17,7 +17,35 @@ public class Armory {
         this.owner = owner;
     }
     
-    public Armor equip(Armor newArmor) {
+    public void equip(Armor newArmor) throws InsufficientItemException {
+        int index = 0;
+        
+        if (nameSearch(newArmor.getName()); == -1) {
+            throw new InsufficientItemException()
+        } else {
+            index = nameSearch(newArmor.getName());
+        }
+        
+        if (newArmor instanceof Helmet) {
+            Armor temp = army[0];
+            army[0] = newArmor;
+            owner.inv.getInv()[index] = temp;
+        } else if (newArmor instanceof Shoulderpads) {
+            Armor temp = army[1];
+            army[1] = newArmor;
+            owner.inv.getInv()[index] = temp;
+        } else if (newArmor instanceof Chestpiece) {
+            Armor temp = army[2];
+            army[2] = newArmor;
+            owner.inv.getInv()[index] = temp;
+        } else if (newArmor instanceof Leggings) {
+            Armor temp = army[3];
+            army[3] = newArmor;
+            owner.inv.getInv()[index] = temp;
+        } else {
+            throw new InsufficientItemException;
+        }
+    }
         
     public int totalDefense() {
         int sum = 0;
