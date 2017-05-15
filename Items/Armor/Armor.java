@@ -10,7 +10,7 @@ public abstract class Armor extends Item {
     }
     
     public String getName() {
-        return namel
+        return name;
     }
     
     public int getValue() {
