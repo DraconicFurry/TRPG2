@@ -13,8 +13,9 @@ public class Inventory {
     }
 
     public void add(Item newItem) throws InventoryFullException {
+        int i = 0;
         boolean added = false;
-        for (int i = 0; i < inv.length; i++) {
+        while (!added && i < inv.length) {
             if (inv[i].getName() == newItem.getName() && inv[i] instanceof StackItem) {
                 StackItem si = (StackItem)inv[i];
                 StackItem nsi = (StackItem)newItem;
@@ -24,6 +25,7 @@ public class Inventory {
                 inv[i] = newItem;
                 added = true;
             }
+            i++;
         }
         
         if (!added) {
