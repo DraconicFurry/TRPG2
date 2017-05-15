@@ -1,6 +1,5 @@
 import java.util.*;
-import Items.*;
-import Armor.*;
+import items.*;
 
 public class Player extends Creature {
 
