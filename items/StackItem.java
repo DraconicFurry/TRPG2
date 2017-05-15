@@ -1,4 +1,8 @@
 package items;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
+import meta.*;
 
 public class StackItem extends Item {
 
