@@ -1,4 +1,7 @@
 package items.armor;
+import items.*;
+import items.consumables.*;
+import meta.*;
 
 public class Armory {
 
@@ -15,24 +18,6 @@ public class Armory {
     }
     
     public Armor equip(Armor newArmor) {
-        if (newArmor instanceof Helmet) {
-            Armor temp = army[0];
-            army[0] = newArmor;
-            return temp;
-        } else if (newArmor instanceof Shoulderpads) {
-            Armor temp = army[1];
-            army[1] = newArmor;
-            return temp;
-        } else if (newArmor instanceof Chestpiece) {
-            Armor temp = army[2];
-            army[2] = newArmor;
-            return temp;
-        } else {
-            Armor temp = army[3];
-            army[3] = newArmor;
-            return temp;
-        }
-    }
         
     public int totalDefense() {
         int sum = 0;
