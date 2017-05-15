@@ -78,13 +78,13 @@ public class Creature {
 	
 	public void heal(int health) {
 		HP += health;
-		if (HP > MHP) [
+		if (HP > MHP) {
 			HP = MHP;
 		}
 	}
 	
 	public String toString() {
-		return (name + ": " + HP + "/" + MHP + "    " + MP + "/" + MMP	
+		return (name + ": " + HP + "/" + MHP + "    " + MP + "/" + MMP);	
 	}
 }
 
