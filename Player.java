@@ -5,8 +5,8 @@ public class Player extends Creature {
 
 	private int gold;
 	private int XP;
-	private Inventory inv;
-	private int defense;
+	Inventory inv;
+	int defense;
 	
 	public Player(String name, int level, int HP, int MP) {
 		super(name, level, HP, MP);
@@ -35,8 +35,20 @@ public class Player extends Creature {
       		inv.add(temp);
 	}
 	
+	    
+    public void equipArmor(int index) {
+        int choice = Input.intPrompt("armor to equip");
+        
+        if (inv[choice] instanceof Helmet || inv[choice] instanceof Shoulderpads || inv[choice] instanceof Chestpiece || inv[choice] instanceof Leggings) {
+            Armor temp = army.equip((Armor)inv[choice]);
+            inv[choice] = temp;
+        } else {
+            throw new InsufficientItemException();
+        }
+    }
+	
 	public int totalDefense() {
-		return inv.getArmory().totalDefense();
+		return army.totalDefense();
 	}
 	
 	public void levelUp() {
