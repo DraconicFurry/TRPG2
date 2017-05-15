@@ -1,4 +1,8 @@
 package helpers;
+import items.*;
+import items.consumables.*;
+import items.armor.*;
+import meta.*;
 import java.util.*;
 
 public class Input {
