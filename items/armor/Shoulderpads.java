@@ -1,6 +1,7 @@
 package items.armor;
 import items.*;
 import items.consumables.*;
+import helpers.*;
 import meta.*;
 
 public class Shoulderpads extends Armor {
