@@ -1,7 +1,10 @@
+package meta;
+import items.*;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
 import java.util.*;
 import java.io.FileNotFoundException;
-import helpers.*;
-import items.*;
 
 public class RunGame {
 	public static void main(String[] args) {
