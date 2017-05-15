@@ -5,7 +5,7 @@ import Consumables.*;
 public class Inventory {
 
     private Item[] inv;
-    private Armor[] army;
+    private Armory army;
 
     public Inventory() {
         inv = new Item[10];
@@ -109,5 +109,9 @@ public class Inventory {
         for (int i = 0; i < inv.length; i++) {
             inv[i] = invList.get(i);    
         }
+    }
+    
+    public Armory getArmory() {
+        return army   
     }
 }
