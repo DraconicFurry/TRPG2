@@ -20,7 +20,7 @@ public class Armory {
     public void equip(Armor newArmor) throws InsufficientItemException {
         int index = 0;
         
-        if (nameSearch(newArmor.getName()); == -1) {
+        if (nameSearch(newArmor.getName()) == -1) {
             throw new InsufficientItemException()
         } else {
             index = nameSearch(newArmor.getName());
@@ -38,13 +38,11 @@ public class Armory {
             Armor temp = army[2];
             army[2] = newArmor;
             owner.inv.getInv()[index] = temp;
-        } else if (newArmor instanceof Leggings) {
+        } else {
             Armor temp = army[3];
             army[3] = newArmor;
             owner.inv.getInv()[index] = temp;
-        } else {
-            throw new InsufficientItemException;
-        }
+        } 
     }
         
     public int totalDefense() {
