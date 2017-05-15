@@ -1,6 +1,6 @@
 import java.util.*;
-import Helpers.Input;
-import Items.*;
+import helpers.Input;
+import items.*;
 
 public class Encounter {
   
