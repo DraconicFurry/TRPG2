@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.FileNotFoundException;
-import Helpers.*;
-import Items.*;
+import helpers.*;
+import items.*;
 
 public class RunGame {
 	public static void main(String[] args) {
