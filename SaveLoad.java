@@ -1,6 +1,10 @@
+package meta;
+import items.*;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
 import java.util.*;
 import java.io.*;
-import helpers.Input;
 
 public class SaveLoad {
 	
