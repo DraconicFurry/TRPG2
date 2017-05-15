@@ -21,7 +21,7 @@ public class Armory {
     public void equip(Armor newArmor) throws InsufficientItemException {
         int index = 0;
         
-        if (nameSearch(newArmor.getName()) == -1) {
+        if (Input.nameSearch(newArmor.getName()) == -1) {
             throw new InsufficientItemException();
         } else {
             index = nameSearch(newArmor.getName());
