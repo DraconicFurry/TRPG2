@@ -9,10 +9,6 @@ public abstract class Armor extends Item {
         this.defense = defense;
     }
     
-    public String getName() {
-        return name;
-    }
-    
     public int getDefense() {
         return defense;
     }
