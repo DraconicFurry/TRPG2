@@ -34,6 +34,10 @@ public class Inventory {
         
     }
     
+    public Item[] getInv() {
+      return inv;
+    }    
+    
     public int trash(int index, int num) throws InsufficientItemException {
         int returnValue = 0;
         index -= 1;
