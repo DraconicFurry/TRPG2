@@ -24,8 +24,8 @@ public class Player extends Creature {
 		this.inv = inv;
 	}
 	
-	public void addArmory(Player player) {
-		this.army = new Armory(player);	
+	public void addArmory(Armory army) {
+		this.army = army;	
 	}
 	
 	public void equipWep(Weapon wep) throws InventoryFullException, InsufficientItemException {
