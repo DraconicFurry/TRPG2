@@ -10,7 +10,11 @@ public class Inventory {
         inv = new Item[10];
         army = new Armory();
     }
-
+    
+    public Item[] getInv() {
+      return inv;
+    }    
+    
     public void add(Item newItem) throws InventoryFullException {
         int i = 0;
         boolean added = false;
@@ -32,10 +36,6 @@ public class Inventory {
         }
         
     }
-    
-    public Item[] getInv() {
-      return inv;
-    }    
     
     public int trash(int index, int num) throws InsufficientItemException {
         int returnValue = 0;
@@ -103,9 +103,5 @@ public class Inventory {
         for (int i = 0; i < inv.length; i++) {
             inv[i] = invList.get(i);    
         }
-    }
-    
-    public Armory getArmory() {
-        return army;  
     }
 }
