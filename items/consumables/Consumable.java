@@ -1,5 +1,4 @@
-package Consumables;
-import Items.*;
+package items.consumables;
 import java.util.*;
 
 public abstract class Consumable extends StackItem {
