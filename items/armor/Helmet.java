@@ -1,5 +1,4 @@
-imports Items.*;
-package Armor;
+package items.armor;
 
 public class Helmet extends Armor {
 
