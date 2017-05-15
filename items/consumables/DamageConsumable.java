@@ -1,5 +1,4 @@
-import Items.*;
-package Consumables;
+package items.consumables;
 
 public class DamageConsumable extends Consumable {
   
