@@ -22,7 +22,7 @@ public class Armory {
         int index = 0;
         
         if (nameSearch(newArmor.getName()) == -1) {
-            throw new InsufficientItemException()
+            throw new InsufficientItemException();
         } else {
             index = nameSearch(newArmor.getName());
         }
