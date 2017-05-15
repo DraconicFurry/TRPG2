@@ -4,7 +4,7 @@ package Consumables;
 public abstract class Consumable extends StackItem {
 
     private int consumeType;
-    private int effectScale
+    private int effectScale;
     
     public Consumable(String name, int effectScale, int value, int amount) {
         super(name, value, amount);
