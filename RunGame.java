@@ -90,12 +90,7 @@ public class RunGame {
 				wep = meleePhys;
 				break;
 		}
-		Player player = new Player(name, 1, 50, 30);
-		try {
-			player.equipWep(wep);
-		} catch (Exception ex) {
-			System.out.println("ERR: Inventory Creation Failed");	
-		}
+		Player player = new Player(name, 1, 0, 50, 30, wep, new Inventory(), 0);
 		return player;
 	}
 	
