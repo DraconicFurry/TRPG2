@@ -1,5 +1,8 @@
 package items.consumables;
-
+import items.*;
+import items.armor.*;
+import meta.*;
+import helpers.*;
 public class DamageConsumable extends Consumable {
   
     public DamageConsumable(String name, int effectScale, int value, int amount) {
