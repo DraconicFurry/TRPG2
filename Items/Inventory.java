@@ -62,7 +62,7 @@ public class Inventory {
         int choice = Input.intPrompt("armor to equip");
         
         if (inv[choice] instanceof Helmet || inv[choice] instanceof Shoulderpads || inv[choice] instanceof Chestpiece || inv[choice] instanceof Leggings) {
-            Armor temp = army.equip(inv[choice]);
+            Armor temp = army.equip((Armor)inv[choice]);
             inv[choice] = temp;
         } else {
             throw new InsufficientItemException();
