@@ -1,6 +1,9 @@
-import java.util.*;
-import helpers.Input;
+package meta;
 import items.*;
+import items.consumables.*;
+import items.armor.*;
+import helpers.*;
+import java.util.*;
 
 public class Encounter {
   
