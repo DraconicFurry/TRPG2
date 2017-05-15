@@ -27,6 +27,6 @@ public abstract class Consumable extends StackItem {
     public abstract void use(Player player, List allies, List enemes);
    
     public String toString() {
-        return ("(Consumable Type " + consumeType + ") " + getname() + "x" + getAmount() + ", Effect Level " + getScale() + ", " + getValue() + "g");
+        return ("(Consumable Type " + consumeType + ") " + getName() + "x" + getAmount() + ", Effect Level " + getScale() + ", " + getValue() + "g");
     }
 }
