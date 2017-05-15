@@ -14,7 +14,7 @@ public class Player extends Creature {
 		gold = 0;
 		XP = 0;
 		inv = new Inventory();
-		defense = totalDefene();
+		defense = totalDefense();
 	}
 	
 	public Player(String name, int level, int XP, int HP, int MP, Weapon wep, Inventory inv, int gold) {
