@@ -1,5 +1,7 @@
 package items.consumables;
 import java.util.*;
+import items.*;
+import com.*;
 
 public abstract class Consumable extends StackItem {
 
@@ -23,7 +25,7 @@ public abstract class Consumable extends StackItem {
         return effectScale;
     }
     
-    public abstract void use(Player player, List allies, List enemes);
+    public abstract void use(Player player, List<Creature> allies, List<Creature> enemies);
    
     public String toString() {
         return ("(Consumable Type " + consumeType + ") " + getName() + "x" + getAmount() + ", Effect Level " + getScale() + ", " + getValue() + "g");

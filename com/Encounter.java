@@ -1,3 +1,4 @@
+package com;
 import java.util.*;
 import helpers.Input;
 import items.*;
@@ -55,7 +56,7 @@ public class Encounter {
 					for (int i = 0; i < enemies.size(); i++) {
 						System.out.println((i + 1) + ": " + enemies.get(i).getName());
 					}
-					int target = input.validIntPrompt("target", enemies.size());
+					int target = Input.validIntPrompt("target", enemies.size());
 					enemies.get(target - 1).takeDamage(player.getWep().calculateAtk());
 					if (enemies.get(target - 1).isDead) {
 						//Gold + XP rewards here

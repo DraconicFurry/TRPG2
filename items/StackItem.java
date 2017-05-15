@@ -3,7 +3,7 @@ package items;
 public class StackItem extends Item {
 
     private int amount;
-    // private int maxAmmount;
+    // private int maxAmount;
     
     public StackItem(String name, int value, int amount) {
         super(name, value);

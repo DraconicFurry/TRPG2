@@ -1,11 +1,15 @@
+package com;
 import java.util.*;
 import items.*;
+import items.armor.*;
+import helpers.*;
 
 public class Player extends Creature {
 
 	private int gold;
 	private int XP;
 	Inventory inv;
+	Armory army;
 	int defense;
 	
 	public Player(String name, int level, int HP, int MP) {
@@ -29,21 +33,20 @@ public class Player extends Creature {
 	
 	public void equipWep(Weapon wep) throws InventoryFullException, InsufficientItemException {
       		int index = Input.searchName(inv.getInv(), wep.getName());
-      		Weapon temp = getWep();
-      		setWep(wep);
+      		Weapon temp = this.wep;
+      		this.wep = wep;
       		inv.trash(index, 1);
       		inv.add(temp);
 	}
 	
 	    
-    	public void equipArmor(int index) {
-        	int choice = Input.intPrompt("armor to equip");
-        
-        	if (inv.getInv()[choice] instanceof Helmet || inv.getInv()[choice] instanceof Shoulderpads || inv.getInv()[choice] instanceof Chestpiece || inv.getInv()[choice] instanceof Leggings) {
-            		Armor temp = army.equip((Armor)inv[choice]);
-            		inv.getInv()[choice] = temp;
+    	public void equipArmor(int index) throws IllegalArgumentException {
+        	if (inv.getInv()[index] instanceof Helmet || inv.getInv()[index] instanceof Shoulderpads || 
+        		inv.getInv()[index] instanceof Chestpiece || inv.getInv()[index] instanceof Leggings) {
+            		Armor temp = army.equip((Armor)inv.getInv()[index]);
+            		inv.getInv()[index] = temp;
         	} else {
-            		throw new InsufficientItemException();
+            		throw new IllegalArgumentException();
         	}
     	}
 	

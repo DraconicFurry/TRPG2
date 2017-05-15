@@ -1,4 +1,5 @@
 package items.armor;
+import items.*;
 
 public abstract class Armor extends Item {
 

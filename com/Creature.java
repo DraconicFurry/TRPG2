@@ -1,4 +1,5 @@
-import java.util.*;
+package com;
+//import java.util.*;
 import items.*;
 
 public class Creature {

@@ -1,6 +1,5 @@
 package items;
 import java.util.*;
-import consumables.*;
 
 public class Inventory {
 
@@ -8,7 +7,6 @@ public class Inventory {
 
     public Inventory() {
         inv = new Item[10];
-        army = new Armory();
     }
 
     public void add(Item newItem) throws InventoryFullException {
@@ -103,9 +101,5 @@ public class Inventory {
         for (int i = 0; i < inv.length; i++) {
             inv[i] = invList.get(i);    
         }
-    }
-    
-    public Armory getArmory() {
-        return army;  
     }
 }

@@ -1,12 +1,15 @@
 package items.consumables;
+import com.*;
+import java.util.*;
+import helpers.Input;
 
 public class HealConsumable extends Consumable {
 
     public HealConsumable(String name, int effectScale, int value, int amount) {
-        super(effectScale, name, value, amount);
+        super(name, effectScale, value, amount);
         setType(3);
     }
-    public void use(Player player, List allies, List enemies) {
+    public void use(Player player, List<Creature> allies, List<Creature> enemies) {
         int target = 0;
         
         if (allies.size() != 0) {

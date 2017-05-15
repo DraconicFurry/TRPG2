@@ -1,7 +1,9 @@
+package com;
 import java.util.*;
 import java.io.FileNotFoundException;
 import helpers.*;
 import items.*;
+import items.armor.*;
 
 public class RunGame {
 	public static void main(String[] args) {
