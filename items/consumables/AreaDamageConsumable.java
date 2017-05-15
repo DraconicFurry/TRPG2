@@ -1,4 +1,7 @@
 package items.consumables;
+import items.*;
+import items.amor.*;
+import meta.*;
 
 public class AreaDamageConsumable extends Consumable {
     
