@@ -24,9 +24,12 @@ public class Player extends Creature {
 		this.inv = inv;
 	}
 	
-	public void equipWep(Weapon wep) throws InventoryFullException {
-		inv.add(this.wep);
-		this.wep = wep;
+	public void equipWep(Weapon wep) throws InventoryFullException, InsufficientItemException {
+      		int index = Input.searchName(inv.getInv(), wep.getName());
+      		Weapon temp = getWep();
+      		setWep(wep);
+      		inv.trash(index, 1);
+      		inv.add(temp);
 	}
 	
 	public int totalDefense() {
