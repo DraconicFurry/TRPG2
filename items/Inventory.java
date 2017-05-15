@@ -11,7 +11,6 @@ public class Inventory {
 
     public Inventory() {
         inv = new Item[10];
-        army = new Armory();
     }
     
     public Item[] getInv() {
