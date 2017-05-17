@@ -13,4 +13,6 @@ public abstract class Armor extends Item {
     public int getDefense() {
         return defense;
     }
+    
+    public abstract String toString();
 }
