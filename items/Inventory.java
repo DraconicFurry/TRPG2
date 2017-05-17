@@ -65,6 +65,7 @@ public class Inventory {
     }
     
     public void display() {
+        System.out.println("----------Inventory----------");
         for (int i = 0; i < inv.length; i++) {
             if (inv[i] == null) {
                 System.out.println((i + 1) + ": None");
@@ -72,6 +73,7 @@ public class Inventory {
                 System.out.println((i + 1) + ": " + inv[i].toString());
             }
         }
+        System.out.println("-----------------------------");
     }
     
     public void increaseSize(int added) {
