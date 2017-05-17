@@ -53,6 +53,18 @@ public class Armory {
         }
         return sum;
     }
+    
+    public void display() {
+        System.out.println("------------Armor------------");
+        for (int i = 0; i < 4; i++) {
+            if (army[i] == null) {
+                System.out.println((i + 1) + ": None");
+            } else {
+                System.out.println((i + i) + ": " + army[i].toString());
+            }
+        }
+        System.out.println("-----------------------------");
+    }
 }
 
 
