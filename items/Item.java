@@ -29,7 +29,7 @@ public abstract class Item implements Comparable<Item> {
         (0) 6: Nulls
     */
     
-    public double compareTo(Item other) {
+    public int compareTo(Item other) {
         double itemType = getSortType(this);
         double otherType = getSortType(other);
         
@@ -76,6 +76,6 @@ public abstract class Item implements Comparable<Item> {
         } else {
             itemType = 0;
         }
-        return itemType;
+        return (int)(itemType * 10);
     }
 }
