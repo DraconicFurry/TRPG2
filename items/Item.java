@@ -19,6 +19,15 @@ public abstract class Item implements Comparable<Item> {
         return value;
     }
     
+    /*  Sort order:
+        1: Weapons
+        2: Armor (Helmet > Shoulderpads > Chestpiece > Leggings)
+        3: Consumables (Damage > AOE Damage > Heal > Summon)
+        4: Resources (By name)
+        5: Junk Items (By name)
+        6: Nulls
+    */
+    
     public int compareTo(Item other) {
         int itemType = 0, otherType = 0;
         
