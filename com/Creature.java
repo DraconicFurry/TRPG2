@@ -45,6 +45,10 @@ public class Creature {
 		return wep;
 	}
 	
+	public void setWep(Weapon other) {
+		this.wep = other;
+	}
+	
 	public int getLevel() {
 		return level;
 	}
