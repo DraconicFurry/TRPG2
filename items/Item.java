@@ -1,5 +1,6 @@
 package items;
 import items.consumables.*;
+import items.armor.*;
 
 public abstract class Item implements Comparable<Item> {
     
