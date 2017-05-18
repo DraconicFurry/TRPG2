@@ -11,6 +11,8 @@ public class InventoryMenu {
     public static void invMenu(Player player) {
         boolean back = false;
         while (!back) {
+            player.inv.display();
+            
             System.out.println("1: Display");
             System.out.println("2: Sell");
             System.out.println("3: Equip");
