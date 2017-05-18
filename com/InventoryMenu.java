@@ -8,11 +8,10 @@ import items.armor.*;
 
 public class InventoryMenu {
     
-    public static void invMenu(Player player) {
+    public static void invMenu(Player player, boolean canSell) {
         boolean back = false;
+        player.inv.display();
         while (!back) {
-            player.inv.display();
-            
             System.out.println("1: Display");
             System.out.println("2: Sell");
             System.out.println("3: Equip");
@@ -26,13 +25,15 @@ public class InventoryMenu {
                     player.inv.display();
                     break;
                 case 2:
-                    int toSellIndex = Input.validIntPrompt("item's number", player.inv.getInv().length);
-                    if (player.inv.getInv()[toSellIndex] instanceof StackItem) {
-                        int toSellNum = Input.validIntPrompt("number to sell", player.inv.getInv()[toSellIndex].getAmounnt());
-                        player.reward(player.inv.trash(toSellIndex, toSellNum), 0);
-                    } else {
-                        player.reward(player.inv.trash(toSellIndex, 1), 0);
-                    }
+					if (canSell) {
+                    	int toSellIndex = Input.validIntPrompt("item's number", player.inv.getInv().length);
+                    	if (player.inv.getInv()[toSellIndex] instanceof StackItem) {
+                        	int toSellNum = Input.validIntPrompt("number to sell", player.inv.getInv()[toSellIndex].getAmounnt());
+                        	player.reward(player.inv.trash(toSellIndex, toSellNum), 0);
+                    	} else {
+                        	player.reward(player.inv.trash(toSellIndex, 1), 0);
+                    	}
+					}
                     break;
                 case 3:
                     int toEquipIndex = input.validIntPrompt("item to equip", player.inv.getInv().length);
@@ -43,7 +44,7 @@ public class InventoryMenu {
                             player.equipArmor(toEquipIndex);
                         }
                     } catch (Exception ex) {
-                        System.out.println("Not a weapon or armor");
+                        System.out.println("Not a weapon or armor.");
                     }
                     break;
                 case 4: 
