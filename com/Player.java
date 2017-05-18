@@ -31,19 +31,21 @@ public class Player extends Creature {
 		this.army = army;	
 	}
 	
-	public void equipWep(Weapon wep) throws InventoryFullException, InsufficientItemException {
-      		int index = Input.searchName(inv.getInv(), wep.getName());
-      		Weapon temp = this.wep;
-      		this.wep = wep;
-      		inv.trash(index, 1);
-      		inv.add(temp);
+	public void equipWep(int index) throws InventoryFullException, InsufficientItemException {
+		Weapon temp = getWep();
+		setWep((Weapon)inv.getInv()[index]);
+		inv.getInv()[index] = temp;
+		inv.sortInv();
 	}
+		
 	
     public void equipArmor(int index) throws IllegalArgumentException, InsufficientItemException {
         if (inv.getInv()[index] instanceof Helmet || inv.getInv()[index] instanceof Shoulderpads || 
         	inv.getInv()[index] instanceof Chestpiece || inv.getInv()[index] instanceof Leggings) {
+		
             	Armor temp = army.equip((Armor)inv.getInv()[index]);
             	inv.getInv()[index] = temp;
+		inv.sortInv();
         }
     }
 	
