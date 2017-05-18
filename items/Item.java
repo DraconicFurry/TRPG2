@@ -21,45 +21,61 @@ public abstract class Item implements Comparable<Item> {
     }
     
     /*  Sort order:
-        1: Weapons
-        2: Armor (Helmet > Shoulderpads > Chestpiece > Leggings)
-        3: Consumables (Damage > AOE Damage > Heal > Summon)
-        4: Resources (By name)
-        5: Junk Items (By name)
-        6: Nulls
+        (5) 1: Weapons
+        (4) 2: Armor (Helmet > Shoulderpads > Chestpiece > Leggings)
+        (3) 3: Consumables (Damage > AOE Damage > Heal > Summon)
+        (2) 4: Resources (By name)
+        (1) 5: Junk Items (By name)
+        (0) 6: Nulls
     */
     
-    public int compareTo(Item other) {
-        int itemType = 0, otherType = 0;
-        
-        if (this instanceof Weapon) {
-            itemType = 4;
-        } else if (this instanceof Consumable) {
-            itemType = 3;
-        } else if (this instanceof ResourceItem) {
-            itemType = 2;
-        } else if (this instanceof StackItem) {
-            itemType = 1;    
-        }
-        
-        if (other instanceof Weapon) {
-            otherType = 4;
-        } else if (other instanceof Consumable) {
-            otherType = 3;
-        } else if (other instanceof ResourceItem) {
-            otherType = 2;
-        } else if (other instanceof StackItem) {
-            otherType = 1;    
-        }
+    public double compareTo(Item other) {
+        double itemType = getSortType(this);
+        double otherType = getSortType(other);
         
         if (itemType != otherType) {
-            return otherType - itemType;
-        } else if (this.getValue() != other.getValue()) {
-            return other.getValue() - this.getValue();
+            return itemType - otherType;
+        } else if (this.getValue != other.getValue) {
+            return this.getValue - other.getValue;
         } else if (!this.getName().equals(other.getName())) {
-            return ((this.getName().charAt(0)) - (other.getName().charAt(0)));
+            return this..getName().compareTo(other.getName());
         } else {
             return 0;
         }
+    }
+    
+    private double getSortType(Item item) {
+        double itemType = 0;
+        
+        if (item instanceof Weapon) {
+            itemType = 5;
+        } else if (item instanceof Armor) {
+            if (item instanceof Helemt) {
+                itemType = 4.9;
+            } else if (item instanceof Shouldpads) {
+                itemType = 4.8;
+            } else if (item instanceof Chestpiece) {
+                itemType = 4.7;
+            } else {
+                itemType = 4.6;
+            }
+        } else if (item instanceof Consumable) {
+            if (item instanceof DamageConsumable) {
+                itemType = 3.9;
+            } else if (item instanceof AreaDamageConsumable) {
+                itemType = 3.8;
+            } else if (item instanceof HealConsumable) {
+                itemType = 3.7;
+            } else {
+                itemType = 3.6;
+            }
+        } else if (item instanceof ResourceItem) {
+            itemType = 2;
+        } else if (item instanceof StackItem) {
+            itemType = 1;    
+        } else {
+            itemType = 0;
+        }
+        return itemType;
     }
 }
