@@ -65,7 +65,7 @@ public class RunGame {
 		System.out.println("3: Inventory");
 		System.out.println("4: Shop");
 		System.out.println("5: Quit");
-		System.out.println("This is just a mockup, nothing actually works yet so imma just go back to main menu now");
+		System.out.println("Test change");
 		return;
 	}
 	
