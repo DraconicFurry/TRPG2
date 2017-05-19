@@ -8,7 +8,7 @@ import items.armor.*;
 public class RunGame {
 	public static void main(String[] args) {
 		boolean quit = false;
-		System.out.println("Fursade initialized.\n");
+		System.out.println("TRPG v0.0.1 initialized.\n");
 		while (!quit) {
 			System.out.println("1: New Character");
 			System.out.println("2: Load Character");
