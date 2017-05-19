@@ -1,5 +1,6 @@
 package com; 
 import items.*;
+import helpers.*;
 import items.consumables.*;
 import items.armor.*;
 
@@ -26,7 +27,7 @@ public class InventoryMenu {
                 case 2:
                     System.out.println(player.getWep().toString());
                     player.army.display();
-                    int toEquipIndex = input.validIntPrompt("item to equip", player.inv.getInv().length);
+                    int toEquipIndex = Input.validIntPrompt("item to equip", player.inv.getInv().length);
                     try {
                         if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
                             player.equipWep(toEquipIndex);
@@ -40,11 +41,18 @@ public class InventoryMenu {
                 case 3: 
                     int toTrashIndex = Input.validIntPrompt("item's number", player.inv.getInv().length);
                     if (player.inv.getInv()[toTrashIndex] instanceof StackItem) {
-                        int toSellNum = Input.validIntPrompt("number to throw away", player.inv.getInv()[toSellIndex].getAmounnt());
-                        player.inv.trash(toSellIndex, toSellNum);
+                    	StackItem temp = (StackItem) player.inv.getInv()[toTrashIndex];
+                        int toTrashNum = Input.validIntPrompt("number to throw away", temp.getAmount());
+                        try {
+                        	player.inv.trash(toTrashIndex, toTrashNum);
+                        } catch (Exception ex) {
+                        }
                     } else {
-                        player.inv.trash(toSellIndex, 1);
-                    }
+                    	try {
+                    		player.inv.trash(toTrashIndex, 1);
+                    	} catch (Exception ex) {
+                    	}
+                    }	
                     break;
                 case 4:
                     back = true;

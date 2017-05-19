@@ -30,29 +30,29 @@ public abstract class Item implements Comparable<Item> {
     */
     
     public int compareTo(Item other) {
-        double itemType = getSortType(this);
-        double otherType = getSortType(other);
+        int itemType = getSortType(this);
+        int otherType = getSortType(other);
         
         if (itemType != otherType) {
             return itemType - otherType;
-        } else if (this.getValue != other.getValue) {
-            return this.getValue - other.getValue;
+        } else if (this.getValue() != other.getValue()) {
+            return this.getValue() - other.getValue();
         } else if (!this.getName().equals(other.getName())) {
-            return this..getName().compareTo(other.getName());
+            return this.getName().compareTo(other.getName());
         } else {
             return 0;
         }
     }
     
-    private double getSortType(Item item) {
+    private int getSortType(Item item) {
         double itemType = 0;
         
         if (item instanceof Weapon) {
             itemType = 5;
         } else if (item instanceof Armor) {
-            if (item instanceof Helemt) {
+            if (item instanceof Helmet) {
                 itemType = 4.9;
-            } else if (item instanceof Shouldpads) {
+            } else if (item instanceof Shoulderpads) {
                 itemType = 4.8;
             } else if (item instanceof Chestpiece) {
                 itemType = 4.7;

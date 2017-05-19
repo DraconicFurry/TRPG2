@@ -2,7 +2,6 @@ package helpers;
 import items.*;
 import items.consumables.*;
 import items.armor.*;
-import meta.*;
 
 public class NameGenerator {
 

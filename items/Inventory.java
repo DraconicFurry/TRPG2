@@ -86,7 +86,7 @@ public class Inventory {
         inv = tempInv;
     }
     
-    private void sortInv() {
+    public void sortInv() {
         for (int i = 0; i < inv.length; i++) {
             if (inv[i] == null) {
                 for (int j = i; j < inv.length - 1; j++) {
