@@ -24,6 +24,8 @@ public class InventoryMenu {
                     player.inv.display();
                     break;
                 case 2:
+                    System.out.println(player.getWep().toString());
+                    player.army.display();
                     int toEquipIndex = input.validIntPrompt("item to equip", player.inv.getInv().length);
                     try {
                         if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
