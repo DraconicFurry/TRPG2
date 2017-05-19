@@ -60,7 +60,13 @@ public class RunGame {
 	}
 	
 	public static void runGame(Player player) {
-		System.out.println("This is where I would run the game, if I had written that code yet.");
+		System.out.println("1: Random Battle");
+		System.out.println("2: Stats");
+		System.out.println("3: Inventory");
+		System.out.println("4: Shop");
+		System.out.println("5: Quit");
+		System.out.println("This is just a mockup, nothing actually works yet so imma just go back to main menu now");
+		return;
 	}
 	
 	public static Player createCharacter() {
