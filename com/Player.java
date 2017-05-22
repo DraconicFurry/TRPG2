@@ -16,7 +16,7 @@ public class Player extends Creature {
 		super(name, level, HP, MP);
 		gold = 0;
 		XP = 0;
-		inv = new Inventory();
+		inv = new Inventory(10);
 		defense = totalDefense();
 	}
 	
