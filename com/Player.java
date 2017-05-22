@@ -1,8 +1,6 @@
 package com;
-import java.util.*;
 import items.*;
 import items.armor.*;
-import helpers.*;
 
 public class Player extends Creature {
 

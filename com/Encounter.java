@@ -7,10 +7,13 @@ public class Encounter {
 	Creature player;
 	ArrayList<Creature> enemies;
 	ArrayList<Creature> allies;
+	ArrayList<Creature> dEnemies;
+	ArrayList<Creature> dAllies;
   
 	public Encounter(Creature player, ArrayList<Creature> enemies) {
 		this.player = player;
     	this.enemies = enemies;
+    	dEnemies = new ArrayList<Creature>();
 		this.allies = null;
  	}
 	
@@ -18,15 +21,20 @@ public class Encounter {
 		this.player = player;
     	this.enemies = enemies;
 		this.allies = allies;
+		dEnemies = new ArrayList<Creature>();
+    	dAllies = new ArrayList<Creature>();
  	}
   
-  	public Encounter(Creature player, Creature[] enemies) {
+	//Constructor is unnecessary, will uncomment and update if ever used
+  	/*public Encounter(Creature player, Creature[] enemies) {
   		this.player = player;
     	this.enemies = new ArrayList<Creature>();
     	for (int i = 0; i < enemies.length; i++) {
       		this.enemies.add(enemies[i]);
     	}
-	}
+    	dEnemies = new ArrayList<Creature>();
+    	dAllies = new ArrayList<Creature>();
+	}*/
 
 	public void run() {
 		while(!player.isDead && enemies.size() > 0) {
@@ -58,8 +66,7 @@ public class Encounter {
 					int target = Input.validIntPrompt("target", enemies.size());
 					enemies.get(target - 1).takeDamage(player.getWep().calculateAtk());
 					if (enemies.get(target - 1).isDead) {
-						//Gold + XP rewards here
-						enemies.remove(target - 1);
+						dEnemies.add(enemies.remove(target - 1));
 					}
 					turnOver = true;
 					break;
@@ -88,8 +95,7 @@ public class Encounter {
 		int target = (int)(Math.random() * enemies.size());
 		enemies.get(target).takeDamage(ally.getWep().calculateAtk());
 		if (enemies.get(target).isDead) {
-			//Rewards
-			enemies.remove(target);
+			dEnemies.add(enemies.remove(target));
 		}
 	}
 	
@@ -103,7 +109,7 @@ public class Encounter {
 			} else {
 				allies.get(target - 1).takeDamage(enemy.getWep().calculateAtk());
 				if (allies.get(target - 1).isDead) {
-					allies.remove(target - 1);	
+					dAllies.add(allies.remove(target - 1));	
 				}
 			}
 		}

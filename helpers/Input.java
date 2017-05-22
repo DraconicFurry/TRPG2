@@ -1,6 +1,7 @@
 package helpers;
 import items.*;
 import java.util.*;
+@SuppressWarnings(value = { "resource" })
 
 public class Input {
 	

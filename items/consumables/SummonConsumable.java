@@ -13,7 +13,7 @@ public class SummonConsumable extends Consumable {
         ally = new Creature(creatureName, level, HP, MP, wep);
     }
     
-    public void use(Player player, List allies, List enemies) {
+    public void use(Player player, List<Creature> allies, List<Creature> enemies) {
         allies.add(ally);
         remove(1);
     }
