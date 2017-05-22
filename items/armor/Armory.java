@@ -1,7 +1,6 @@
 package items.armor;
-import com.*;
+import com.*; 
 import items.*;
-import items.consumables.*;
 import helpers.*;
 
 
@@ -20,11 +19,8 @@ public class Armory {
     }
     
     public Armor equip(Armor newArmor) throws InsufficientItemException {
-        int index = 0;
         if (Input.searchName(owner.inv.getInv(), newArmor.getName()) == -1) {
             throw new InsufficientItemException();
-        } else {
-            index = Input.searchName(owner.inv.getInv(), newArmor.getName());
         }
         
         if (newArmor instanceof Helmet) {

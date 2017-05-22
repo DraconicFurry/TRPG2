@@ -1,6 +1,7 @@
 package com;
 import java.util.*;
 import java.io.*;
+@SuppressWarnings(value = { "unused", "resource" })
 
 public class SaveLoad {
 	
