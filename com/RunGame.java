@@ -1,5 +1,4 @@
 package com;
-import java.io.FileNotFoundException;
 import helpers.*;
 import items.*;
 import items.armor.*;
@@ -29,8 +28,9 @@ public class RunGame {
 				case 2:
 					try {
 					   	SaveLoad.listFiles();
-              		} catch (FileNotFoundException ex) {
+              		} catch (Exception ex) {
                   		System.out.println("No savefiles found.");
+                  		break;
                		}
 					try {
 						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
