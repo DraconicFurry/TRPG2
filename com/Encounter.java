@@ -4,20 +4,20 @@ import helpers.Input;
 
 public class Encounter {
   
-	Creature player;
+	Player player;
 	ArrayList<Creature> enemies;
 	ArrayList<Creature> allies;
 	ArrayList<Creature> dEnemies;
 	ArrayList<Creature> dAllies;
   
-	public Encounter(Creature player, ArrayList<Creature> enemies) {
+	public Encounter(Player player, ArrayList<Creature> enemies) {
 		this.player = player;
     	this.enemies = enemies;
     	dEnemies = new ArrayList<Creature>();
 		this.allies = null;
  	}
 	
-	public Encounter(Creature player, ArrayList<Creature> enemies, ArrayList<Creature> allies) {
+	public Encounter(Player player, ArrayList<Creature> enemies, ArrayList<Creature> allies) {
 		this.player = player;
     	this.enemies = enemies;
 		this.allies = allies;
@@ -37,6 +37,7 @@ public class Encounter {
 	}*/
 
 	public void run() {
+		int startSize = enemies.size();
 		while(!player.isDead && enemies.size() > 0) {
 			playerAction();
 			if (allies != null) {
@@ -48,11 +49,21 @@ public class Encounter {
 				enemyAction(enemies.get(i));
 			}
 		}
+		if (player.isDead) {
+			endBattle(true, false);
+		} else if (dEnemies.size() == startSize) { //all enemies have been killed, player did not run
+			endBattle(false, false);
+		} else {  //player ran
+			endBattle(true, true);
+		}
 	}
 	
 	public void playerAction() {
 		boolean turnOver = false;
 		while (!turnOver) {
+			System.out.println();
+			//print enemies
+			System.out.println();
 			System.out.println("1: Attack");
 			System.out.println("2: Skills");
 			System.out.println("3: Items");
@@ -81,7 +92,6 @@ public class Encounter {
 						while(enemies.size() > 0) {
 							enemies.remove(0);
 						}
-						//Drop 50% of gold
 					} else {
 						System.out.println("Failed to run!");
 					}
@@ -92,15 +102,17 @@ public class Encounter {
 	}
 							 
 	public void allyAction(Creature ally) {
-		int target = (int)(Math.random() * enemies.size());
-		enemies.get(target).takeDamage(ally.getWep().calculateAtk());
-		if (enemies.get(target).isDead) {
-			dEnemies.add(enemies.remove(target));
+		if (enemies.size() > 0) {
+			int target = (int)(Math.random() * enemies.size());
+			enemies.get(target).takeDamage(ally.getWep().calculateAtk());
+			if (enemies.get(target).isDead) {
+				dEnemies.add(enemies.remove(target));
+			}
 		}
 	}
 	
 	public void enemyAction(Creature enemy) {
-		if (allies == null) {
+		if (allies == null || allies.size() <= 0) {
 			player.takeDamage(enemy.getWep().calculateAtk());
 		} else {
 			int target = (int)(Math.random() * (allies.size() + 1));
@@ -112,6 +124,30 @@ public class Encounter {
 					dAllies.add(allies.remove(target - 1));	
 				}
 			}
+		}
+	}
+	
+	public void endBattle(boolean survived, boolean ran) {
+		if (!survived) {
+			System.out.println("You died. All rewards lost.");
+		} else {
+			if (ran) {
+				System.out.println("You escaped from battle! 50% of gold earned in this fight was lost.");
+			} else {
+				System.out.println("You won!");
+			}
+			calculateRewards(ran);
+		}
+	}
+	
+	public void calculateRewards(boolean ran) {
+		for (int i = 0; i < dEnemies.size(); i++) {
+			int gEarned = dEnemies.get(i).level * 5;
+			gEarned += (int)(Math.random() * 5 * dEnemies.get(i).level);
+			player.gold += gEarned;
+			player.XP += dEnemies.get(i).level * 5;
+			player.levelUp();
+			//Item drops
 		}
 	}
 }

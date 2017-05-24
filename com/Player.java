@@ -1,6 +1,7 @@
 package com;
 import items.*;
 import items.armor.*;
+import java.util.ArrayList;
 
 public class Player extends Creature {
 
@@ -9,6 +10,7 @@ public class Player extends Creature {
 	public Inventory inv;
 	Armory army;
 	int defense;
+	ArrayList<Creature> allies;
 	
 	public Player(String name, int level, int HP, int MP) {
 		super(name, level, HP, MP);
