@@ -70,7 +70,6 @@ public class Inventory {
                 System.out.println((i + 1) + ": " + inv[i].toString());
             }
         }
-        System.out.println("-----------------------------");
     }
     
     public void increaseSize(int added) {
