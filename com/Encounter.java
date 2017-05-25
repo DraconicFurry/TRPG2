@@ -62,7 +62,17 @@ public class Encounter {
 		boolean turnOver = false;
 		while (!turnOver) {
 			System.out.println();
-			//print enemies
+			System.out.println(player);
+			if (allies != null) {
+				System.out.println("\n ---Allies---");
+				for (int i = 0; i < allies.size(); i++) {
+					System.out.println(allies.get(i));
+				}
+			}
+			System.out.println("\n ---Enemies---");
+			for (int i = 0; i < enemies.size(); i++) {
+				System.out.println(enemies.get(i));
+			}
 			System.out.println();
 			System.out.println("1: Attack");
 			System.out.println("2: Skills");

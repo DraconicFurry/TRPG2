@@ -7,9 +7,10 @@ public class Input {
 	
 	public static int intPrompt(String prompt) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Input " + prompt + ":");
+		System.out.println("\nInput " + prompt + ":");
 		System.out.print(">> ");
 		try {
+			System.out.println();
 			return sc.nextInt();
 		} catch (InputMismatchException ex) {
 			System.out.println("Invalid Input.");
