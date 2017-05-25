@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class RunGame {
 	public static void main(String[] args) {
 		boolean quit = false;
-		System.out.println("TRPG v0.0.1 initialized.\n");
+		System.out.println("Fursade v0.0.1 initialized.\n");
 		while (!quit) {
 			System.out.println("1: New Character");
 			System.out.println("2: Load Character");
@@ -59,7 +59,7 @@ public class RunGame {
 		System.out.println("No test scenario loaded.");
 	}
 	
-	public static void runGame(Player player) {
+	public static void runGame(Player player) {			
 		System.out.println("1: Random Battle");
 		System.out.println("2: Stats");
 		System.out.println("3: Inventory");
@@ -244,7 +244,7 @@ public class RunGame {
 				wep = meleePhys;
 				break;
 		}
-		Player player = new Player(name, 1, 0, 50, 30, wep, new Inventory(), 0);
+		Player player = new Player(name, 1, 0, 50, 30, wep, new Inventory(10), 0);
 		Armory army = new Armory(player);
 		player.addArmory(army);
 		return player;

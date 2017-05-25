@@ -85,7 +85,7 @@ public class Encounter {
 					System.out.println("Skills not yet implemented.");
 					break;
 				case 3:
-					System.out.println("Items not yet implemented.");
+					System.out.println("Items not yet implemented. || Yes they r Martin u bitch i worked fucking hard on those");
 					break;
 				case 4:
 					if ((int)(Math.random() * 2) == 1) { //50% chance

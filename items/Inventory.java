@@ -5,8 +5,8 @@ public class Inventory {
 
     private Item[] inv;
 
-    public Inventory() {
-        inv = new Item[10];
+    public Inventory(int size) {
+        inv = new Item[size];
     }
     
     public Item[] getInv() {
