@@ -22,6 +22,10 @@ public class StackItem extends Item {
         amount -= num;  
     }
     
+    public void changeAmount(int num) {
+    	amount = num;
+    }
+    
     public String toString() {
         return ("(Junk) " + getName() + "x" + amount + ", " + getValue() + "g (" + (getValue() * amount) + "g total)");
     }

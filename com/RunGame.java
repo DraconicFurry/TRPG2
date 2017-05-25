@@ -245,7 +245,7 @@ public class RunGame {
 				wep = meleePhys;
 				break;
 		}
-		Player player = new Player(name, 1, 0, 50, 30, wep, new Inventory(), 0);
+		Player player = new Player(name, 1, 0, 50, 30, wep, new Inventory(10), 0);
 		Armory army = new Armory(player);
 		player.addArmory(army);
 		return player;
