@@ -1,6 +1,10 @@
 Confirmed To-Do List
   
-  Implement primary gameplay loop
+  Implement shop menu
+  
+  Improve monster generation
+  
+  Implement dungeons
   
   Implement use for ResourceItems
   
