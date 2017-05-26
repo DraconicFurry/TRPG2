@@ -6,8 +6,8 @@ import helpers.*;
 
 public class Armory {
 
-    private Armor[] army;
-    private Player owner;
+    public Armor[] army;
+    Player owner;
     
     public Armory(Player owner) {
         army = new Armor[4];

@@ -73,9 +73,13 @@ public class RunGame {
 				case 2:
 					System.out.println("---" + player.name + "---");
 					System.out.println("Level " + player.level + ", XP: " + player.XP + "/" + (player.level * 100));
+					System.out.println("Gold: " + player.gold);
 					System.out.println("HP: " + player.HP + "/" + player.MHP + ", MP: " + player.MP + "/" + player.MMP);
 					System.out.println(player.wep);
-					//Add armor here once that stuff works
+					System.out.println(player.army.army[0]);
+					System.out.println(player.army.army[1]);
+					System.out.println(player.army.army[2]);
+					System.out.println(player.army.army[3]);
 					break;
 				case 3:
 					invMenu(player);
