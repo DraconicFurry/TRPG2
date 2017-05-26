@@ -2,8 +2,6 @@ Confirmed To-Do List
   
   Implement shop menu
   
-  Improve monster generation
-  
   Implement dungeons
   
   Implement use for ResourceItems
