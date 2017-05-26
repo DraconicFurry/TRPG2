@@ -14,6 +14,7 @@ public class Creature {
 	Weapon wep;
 	
 	public Creature(String name, int level, int HP, int MP, Weapon wep) {
+		this.name = name;
 		this.level = level;
 		this.HP = HP;
 		this.MHP = HP;
@@ -24,6 +25,7 @@ public class Creature {
 	}
 	
 	public Creature(String name, int level, int HP, int MP) {
+		this.name = name;
 		this.level = level;
 		this.HP = HP;
 		this.MHP = HP;
@@ -78,6 +80,16 @@ public class Creature {
 		if (HP <= 0) {
 			HP = 0;
 			isDead = true;
+		}
+	}
+	
+	public void takeDamage(int damage, String source) { //add isRanged and isMagic
+		HP -= damage;
+		System.out.println(this.name + " took " + damage + " damage from " + source + "!");
+		if (HP <= 0) {
+			HP = 0;
+			isDead = true;
+			System.out.println(this.name + " was slain!");
 		}
 	}
 	
