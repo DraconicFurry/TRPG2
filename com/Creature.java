@@ -83,6 +83,16 @@ public class Creature {
 		}
 	}
 	
+	public void takeDamage(int damage, String source) { //add isRanged and isMagic
+		HP -= damage;
+		System.out.println(this.name + " took " + damage + " damage from " + source + "!");
+		if (HP <= 0) {
+			HP = 0;
+			isDead = true;
+			System.out.println(this.name + " was slain!");
+		}
+	}
+	
 	public void heal(int health) {
 		HP += health;
 		if (HP > MHP) {

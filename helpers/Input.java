@@ -9,13 +9,15 @@ public class Input {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nInput " + prompt + ":");
 		System.out.print(">> ");
+		int out;
 		try {
-			System.out.println();
-			return sc.nextInt();
+			out = sc.nextInt();
 		} catch (InputMismatchException ex) {
-			System.out.println("Invalid Input.");
-			return intPrompt(prompt);
+			System.out.println("\nInvalid Input.\n");
+			out = intPrompt(prompt);
 		}
+		System.out.println();
+		return out;
 	}
 	
 	public static int validIntPrompt(String prompt, int max) {
@@ -38,14 +40,17 @@ public class Input {
 	
 	public static String strPrompt(String prompt) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Input " + prompt + ":");
+		System.out.println("\nInput " + prompt + ":");
 		System.out.print(">> ");
+		String out;
 		try {
-			return sc.next();
+			out = sc.next();
 		} catch (InputMismatchException ex) {
-			System.out.println("Invalid Input.");
-			return strPrompt(prompt);
+			System.out.println("\nInvalid Input.\n");
+			out = strPrompt(prompt);
 		}
+		System.out.println();
+		return out;
 	}
 	
    	public static int searchName(Item[] arr, String name) {
