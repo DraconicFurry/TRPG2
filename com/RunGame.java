@@ -59,6 +59,7 @@ public class RunGame {
 	
 	public static void runGame(Player player) {
 		while (true) {
+			System.out.println("\n---Tavern---");
 			System.out.println("1: Random Battle");
 			System.out.println("2: Stats");
 			System.out.println("3: Inventory");
@@ -70,7 +71,11 @@ public class RunGame {
 					randBattle(player);
 					break;
 				case 2:
-					System.out.println(player.toString()); //replace with detailed stats view later
+					System.out.println("---" + player.name + "---");
+					System.out.println("Level " + player.level + ", XP: " + player.XP + "/" + (player.level * 100));
+					System.out.println("HP: " + player.HP + "/" + player.MHP + ", MP: " + player.MP + "/" + player.MMP);
+					System.out.println(player.wep);
+					//Add armor here once that stuff works
 					break;
 				case 3:
 					invMenu(player);
@@ -91,7 +96,7 @@ public class RunGame {
 		int mod = ((int)Math.random() * 3) - 1; //generates -1, 0, or 1
 		numEnemies -= mod;
 		enemyLevel += mod; //creates either 4 weak enemies, 3 normal enemies, or 2 strong enemies
-		if (enemyLevel <= 0) {enemyLevel = 1;}
+		if (enemyLevel <= 0) {enemyLevel = 1; numEnemies--;}
 		for (int i = 0; i < numEnemies; i++) {
 			enemies.add(randEnemy(enemyLevel, true));
 		}
@@ -157,9 +162,11 @@ public class RunGame {
 		}
 		
 		String name = "Wolf"; //replace with enemy name generator
-		String wepName = "Claws"; //replace this and next 2 lines with weapon type generator
 		boolean ranged = false;
+		if (Math.random() > 0.50) {ranged = true;}
 		boolean magic = false;
+		if (Math.random() > 0.50) {magic = true;}
+		String wepName = NameGenerator.generateWepName(ranged, magic); //replace this and next 2 lines with weapon type generator
 		return new Creature(name, enemyLevel, health, mana, new Weapon(wepName, 0, minDam, maxDam, ranged, magic));
 	}
 	

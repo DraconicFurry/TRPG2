@@ -16,15 +16,15 @@ public class NameGenerator {
         
         if (isRanged) {
             if (isMagic) {
-                prefix = magicPrefixes[(int)(Math.random() * rangedPrefixes.length)];
-                wepType = magicWeapons[(int)(Math.random() * rangedWeapons.length)];
+                prefix = magicPrefixes[(int)(Math.random() * magicPrefixes.length)];
+                wepType = magicWeapons[(int)(Math.random() * magicWeapons.length)];
             } else {
                 prefix = rangedPrefixes[(int)(Math.random() * rangedPrefixes.length)];
                 wepType = rangedWeapons[(int)(Math.random() * rangedWeapons.length)];
             }
         } else {
             if (isMagic) {
-				prefix = magMeleePrefixes[(int)(Math.random() * rangedPrefixes.length)];
+				prefix = magMeleePrefixes[(int)(Math.random() * magMeleePrefixes.length)];
 			} else {
             	prefix = meleePrefixes[(int)(Math.random() * meleePrefixes.length)];
 			}
