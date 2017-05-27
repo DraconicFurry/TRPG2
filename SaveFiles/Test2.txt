@@ -1,0 +1,1 @@
+Test2 1 0 0 50 50 30 30 Conjured_Dagger 0 5 10 false true Starter_Helmet 1 10 Starter_Shoulderpads 1 15 Starter_Chestpiece 1 20 Starter_Leggings 1 15 10 

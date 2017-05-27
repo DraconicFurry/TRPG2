@@ -1,0 +1,1 @@
+Test 1 0 0 50 50 30 30 Apprentice's_Staff 0 5 10 true true Starter_Helmet 1 10 Starter_Shoulderpads 1 15 Starter_Chestpiece 1 20 Starter_Leggings 1 15 10 
