@@ -12,7 +12,6 @@ public class ShopMenu {
 		// This is a temp one just for practice purposes
 		// We can establish it wherever I'm thinking that it updates every time you clear a dungeon/fight
 		// But to make it truly random we would need that array of possible Items from which it would take random Items
-		boolean quitShop = false;
 		Inventory shopInv = new Inventory(5);
 		shopInv.add(new StackItem("Hobgoblin Horn", 3, 10));
 		shopInv.add(new Weapon("Skeleton Arm", 15, 10, 20, false, false));
@@ -20,7 +19,7 @@ public class ShopMenu {
 		System.out.println("You have " + player.gold + "g\n");
 		showShopInv(shopInv);
 		
-		while (!quitShop) {
+		while (true) {
 			System.out.println("1: Buy");
 			System.out.println("2: Sell");
 			System.out.println("3: Back");
@@ -59,8 +58,7 @@ public class ShopMenu {
 	                }	
 	                break;
 				case 3:
-					quitShop = true;
-					break;
+					return;
 			}
 		}
 	}
@@ -70,6 +68,5 @@ public class ShopMenu {
 		for (int i = 0; i < shopInv.getInv().length; i++) {
 			System.out.println(i + ": " + shopInv.getInv()[i].toString());;
 		}
-		System.out.println("-----------------------------");
 	}
 }

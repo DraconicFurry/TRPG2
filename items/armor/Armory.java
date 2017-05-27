@@ -56,10 +56,9 @@ public class Armory {
             if (army[i] == null) {
                 System.out.println((i + 1) + ": None");
             } else {
-                System.out.println((i + i) + ": " + army[i].toString());
+                System.out.println((i + 1) + ": " + army[i].toString());
             }
         }
-        System.out.println("-----------------------------");
     }
 }
 

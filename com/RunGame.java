@@ -15,6 +15,7 @@ public class RunGame {
 			System.out.println("3: Help");
 			System.out.println("4: Quit");
 			System.out.println("5: Run Test Scenario");
+			System.out.println();
 			int menuChoice = Input.validIntPrompt("menu item", 5);
 			System.out.println();
 			switch (menuChoice) {
@@ -73,9 +74,9 @@ public class RunGame {
 		sc.close();
 	}
 	
-	public static void runGame(Player player) {
+	public static void runGame(Player player) {		
 		while (true) {
-			System.out.println("\n---Tavern---");
+			System.out.println("\n-------Tavern-------");
 			System.out.println("1: Random Battle");
 			System.out.println("2: Stats");
 			System.out.println("3: Inventory");
@@ -191,53 +192,67 @@ public class RunGame {
 	}
 	
 	public static void invMenu(Player player) {
-        boolean back = false;
+		System.out.println();
         player.inv.display();
-        while (!back) {
-            System.out.println("1: Display");
-            System.out.println("2: Equip");
-            System.out.println("3: Throw Away");
-            System.out.println("4: Back");
-            int invChoice = Input.validIntPrompt("Inventory Action", 4);
+        System.out.println();
+        while (true) {
+        	System.out.println("-----Inventory Menu-----");
+            System.out.println("1: Equip");
+            System.out.println("2: Throw Away");
+            System.out.println("3: Back");
+            int invChoice = Input.validIntPrompt("Inventory Action", 3);
             System.out.println();
 
             switch (invChoice) {
                 case 1:
-                    player.inv.display();
-                    break;
-                case 2:
+                	System.out.println("These are your currently equipped weapon and armor:");
                     System.out.println(player.getWep().toString());
                     player.army.display();
-                    int toEquipIndex = Input.validIntPrompt("item to equip", player.inv.getInv().length);
+                    System.out.println();
+                    System.out.println("And this is your bag. Look for weapons or pieces of armor to equip!");
+                    player.inv.display();
+                    int toEquipIndex = Input.validIntPrompt("the number of a weapon or piece of armor in your bag to equip", player.inv.getInv().length);
                     try {
                         if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
                             player.equipWep(toEquipIndex);
-                        } else {
+                            System.out.println("Sucessfully equipped weapon!");
+                        } else if (player.inv.getInv()[toEquipIndex] instanceof Armor) {
                             player.equipArmor(toEquipIndex);
+                            System.out.println("Sucessfully equipped armor!");
+                        } else {
+                        	throw new InsufficientItemException();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Not a weapon or armor.");
+                        System.out.println("Not a weapon or piece of armor.");
                     }
                     break;
-                case 3: 
+                case 2: 
+                	System.out.println("Here is your bag. Remember, you can sell items in the shop instead of throwing them away!");
+                	player.inv.display();
                     int toTrashIndex = Input.validIntPrompt("item's number", player.inv.getInv().length);
                     if (player.inv.getInv()[toTrashIndex] instanceof StackItem) {
                     	StackItem temp = (StackItem) player.inv.getInv()[toTrashIndex];
                         int toTrashNum = Input.validIntPrompt("number to throw away", temp.getAmount());
                         try {
+                        	if (player.inv.getInv()[toTrashIndex] == null) {
+                        		throw new InsufficientItemException();
+                        	}
                         	player.inv.trash(toTrashIndex, toTrashNum);
                         } catch (Exception ex) {
+                        	System.out.println("You cannot throw that away");
                         }
-                    } else {
+                    } else if (player.inv.getInv()[toTrashIndex] instanceof Item) {
                     	try {
                     		player.inv.trash(toTrashIndex, 1);
                     	} catch (Exception ex) {
+                    		System.out.println("You cannot throw that away");
                     	}
-                    }	
+                    } else {
+                    	System.out.println("Not an item, cannot be thrown away");
+                    }
                     break;
-                case 4:
-                    back = true;
-                    break;
+                case 3:
+                	return;
             }
             System.out.println();
         }
@@ -245,6 +260,8 @@ public class RunGame {
 	
 	public static Player createCharacter() {
 		String name = Input.strPrompt("character name");
+		System.out.println();
+		System.out.println("Choose a Weapon:");
 		Weapon meleePhys = new Weapon("Trainee's Sword", 0, 5, 10, false, false);
 		Weapon rangePhys = new Weapon("Recruit's Bow", 0, 5, 10, true, false);
 		Weapon meleeMagi = new Weapon("Conjured Dagger", 0, 5, 10, false, true);
