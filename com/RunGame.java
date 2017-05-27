@@ -1,11 +1,13 @@
 package com;
-import helpers.*;
+import helpers.*; 
+import java.util.*; //
+import java.io.*; //
 import items.*;
 import items.armor.*;
 import java.util.ArrayList;
 
 public class RunGame {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException, InventoryFullException {
 		System.out.println("TRPG v0.0.1 initialized.\n");
 		while (true) {
 			System.out.println("1: New Character");
@@ -28,16 +30,21 @@ public class RunGame {
 				case 2:
 					try {
 					   	SaveLoad.listFiles();
+					   	System.out.println((SaveLoad.numFiles() + 1) + ": Return to Menu");
               		} catch (Exception ex) {
                   		System.out.println("No savefiles found.");
                   		break;
                		}
 					try {
-						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
-						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
-						runGame(loadPlayer);
+						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles() + 1);
+						if (fileChoice == SaveLoad.numFiles() + 1) {
+							break;
+						} else {
+							Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
+							runGame(loadPlayer);
+						}
 					} catch (Exception ex) {
-						System.out.println("Savefile not found. Your save data may be corrupted.");
+						System.out.println("This savefile is corrupted.");
 					}
 					break;
 				case 3:
@@ -46,15 +53,24 @@ public class RunGame {
 				case 4:
 					return;
 				case 5:
-					runTest();
+					try {
+						runTest();
+					} catch (FileNotFoundException e) {
+						System.out.println("File not found.");
+					}
 					break;
 			}
 			System.out.println();
 		}
 	}
 	
-	public static void runTest() {
-		System.out.println("No test scenario loaded.");
+	public static void runTest() throws FileNotFoundException {
+		Scanner sc = new Scanner(new File("Savefiles/Test.txt"));
+		while (sc.hasNext()) {
+			Input.strPrompt("any character to read next token");
+			System.out.println(sc.next());
+		}
+		sc.close();
 	}
 	
 	public static void runGame(Player player) {
