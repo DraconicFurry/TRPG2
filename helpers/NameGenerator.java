@@ -9,6 +9,9 @@ public class NameGenerator {
     private static String[] rangedWeapons = new String[] {"Bow", "Gun", "Crossbow", "Javelin"};
     private static String[] magicWeapons = new String[] {"Staff", "Rod", "Wand", "Scepter"};
     private static String[] meleeWeapons = new String[] {"Sword", "Knife", "Mace", "Axe", "Spear", "Warhammer", "Trident"};
+    private static String[] monsterPrefixes = new String[] {"Orc", "Troll", "Goblin", "Elf", "Slime", "Demon", "Elemental", "Shadow", "Gnome", "Dwarf", "Undead", "Imp", "Feline", "Rogue"};
+    private static String[] monsterSuffixes = new String[] {"Warrior", "Rogue", "Archer", "Hunter", "Mage", "Spellslinger", "Berserker", "Guardian", "Sorcerer", "Warlock", "Summoner", "Werewolf"}; 
+    
     
     public static String generateWepName(boolean isRanged, boolean isMagic) {
         String prefix;
@@ -32,5 +35,9 @@ public class NameGenerator {
         }
         
         return (prefix + " " + wepType);
+    }
+    
+    public static String generateMonsterName() {
+    	return ((monsterPrefixes[(int)(Math.random() * monsterPrefixes.length)]) + (monsterSuffixes[(int)(Math.random() * monsterSuffixes.length)]));
     }
 }
