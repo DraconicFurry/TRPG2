@@ -1,11 +1,13 @@
 package com;
-import helpers.*;
+import helpers.*; 
+import java.util.*; //
+import java.io.*; //
 import items.*;
 import items.armor.*;
 import java.util.ArrayList;
 
 public class RunGame {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException, InventoryFullException {
 		System.out.println("TRPG v0.0.1 initialized.\n");
 		while (true) {
 			System.out.println("1: New Character");
@@ -29,16 +31,21 @@ public class RunGame {
 				case 2:
 					try {
 					   	SaveLoad.listFiles();
+					   	System.out.println((SaveLoad.numFiles() + 1) + ": Return to Menu");
               		} catch (Exception ex) {
                   		System.out.println("No savefiles found.");
                   		break;
                		}
 					try {
-						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
-						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
-						runGame(loadPlayer);
+						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles() + 1);
+						if (fileChoice == SaveLoad.numFiles() + 1) {
+							break;
+						} else {
+							Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
+							runGame(loadPlayer);
+						}
 					} catch (Exception ex) {
-						System.out.println("Savefile not found. Your save data may be corrupted.");
+						System.out.println("This savefile is corrupted.");
 					}
 					break;
 				case 3:
@@ -47,15 +54,24 @@ public class RunGame {
 				case 4:
 					return;
 				case 5:
-					runTest();
+					try {
+						runTest();
+					} catch (FileNotFoundException e) {
+						System.out.println("File not found.");
+					}
 					break;
 			}
 			System.out.println();
 		}
 	}
 	
-	public static void runTest() {
-		System.out.println("No test scenario loaded.");
+	public static void runTest() throws FileNotFoundException {
+		Scanner sc = new Scanner(new File("Savefiles/Test.txt"));
+		while (sc.hasNext()) {
+			Input.strPrompt("any character to read next token");
+			System.out.println(sc.next());
+		}
+		sc.close();
 	}
 	
 	public static void runGame(Player player) {		
@@ -74,9 +90,13 @@ public class RunGame {
 				case 2:
 					System.out.println("---" + player.name + "---");
 					System.out.println("Level " + player.level + ", XP: " + player.XP + "/" + (player.level * 100));
+					System.out.println("Gold: " + player.gold);
 					System.out.println("HP: " + player.HP + "/" + player.MHP + ", MP: " + player.MP + "/" + player.MMP);
 					System.out.println(player.wep);
-					//Add armor here once that stuff works
+					System.out.println(player.army.army[0]);
+					System.out.println(player.army.army[1]);
+					System.out.println(player.army.army[2]);
+					System.out.println(player.army.army[3]);
 					break;
 				case 3:
 					invMenu(player);
@@ -191,9 +211,11 @@ public class RunGame {
                     System.out.println();
                     System.out.println("And this is your bag. Look for weapons or pieces of armor to equip!");
                     player.inv.display();
-                    int toEquipIndex = Input.validIntPrompt("the number of a weapon or piece of armor in your bag to equip", player.inv.getInv().length);
+                    int toEquipIndex = Input.validIntPrompt("the number of a weapon or piece of armor in your bag to equip, or " + (player.inv.getInv().length + 1) + " to go back", player.inv.getInv().length + 1);
                     try {
-                        if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
+                    	if (toEquipIndex == (player.inv.getInv().length + 1)) {
+                    		System.out.println("Returning to main inventory menu");
+                    	} else if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
                             player.equipWep(toEquipIndex);
                             System.out.println("Sucessfully equipped weapon!");
                         } else if (player.inv.getInv()[toEquipIndex] instanceof Armor) {
@@ -237,6 +259,79 @@ public class RunGame {
             System.out.println();
         }
     }
+	
+	public static void shopMenu(Player player) throws InventoryFullException, InsufficientItemException {
+		// WE NEED AN ARRAY OF ITEMS OR WHATEVER THE DUDE SELLS
+		//Im thinking the shop guy has his own "inventory" which gets displayed
+		// This is a temp one just for practice purposes
+		// We can establish it wherever I'm thinking that it updates every time you clear a dungeon/fight
+		// But to make it truly random we would need that array of possible Items from which it would take random Items
+		Inventory shopInv = new Inventory(5);
+		shopInv.add(new StackItem("Hobgoblin Horn", 3, 10));
+		shopInv.add(new Weapon("Skeleton Arm", 15, 10, 20, false, false));
+		shopInv.add(new ResourceItem("Iron", 7, 5));
+		System.out.println("You have " + player.gold + "g\n");
+		showShopInv(shopInv);
+		
+		while (true) {
+			System.out.println("1: Buy");
+			System.out.println("2: Sell");
+			System.out.println("3: Back");
+			int shopMenuChoice = Input.validIntPrompt("shop choice", 3);
+			switch (shopMenuChoice) {
+				case 1:
+					int shopBuyChoice = Input.validIntPrompt("item to buy", shopInv.getInv().length);
+					if (shopInv.getInv()[shopBuyChoice] instanceof StackItem) {
+						// StackItems. Costs gold (Or throws exception), then adds the item 
+						StackItem temp = (StackItem) shopInv.getInv()[shopBuyChoice];
+						int buyNumber = Input.validIntPrompt("number to buy", temp.getAmount());
+						try {
+							player.buy(buyNumber * temp.getValue());
+							int firstNum = temp.getAmount();
+							temp.changeAmount(buyNumber);
+							player.inv.add(temp);
+							temp.changeAmount(firstNum - buyNumber);
+						} catch (Exception ex) {
+							System.out.println("Not enough gold or inventory space");
+						}
+					} else {
+						try {
+							player.buy(shopInv.getInv()[shopBuyChoice].getValue());
+							player.inv.add(shopInv.getInv()[shopBuyChoice]);
+							shopInv.trash(shopBuyChoice, 1);
+							shopInv.sortInv();
+						} catch (Exception ex) {
+							System.out.println("Not enough gold or inventory space");
+						}
+					}
+					break;
+					
+				case 2:
+					player.inv.display();
+					int toSellIndex = Input.validIntPrompt("item to sell", player.inv.getInv().length);
+	                if (player.inv.getInv()[toSellIndex] instanceof StackItem) {
+	                	StackItem temp = (StackItem) player.inv.getInv()[toSellIndex];
+	                    int toSellNum = Input.validIntPrompt("number to throw away", temp.getAmount());
+	                    	player.reward(player.inv.trash(toSellIndex, toSellNum), 0);
+	                } else {
+	                	try {
+	                		player.inv.trash(toSellIndex, 1);
+	                	} catch (Exception ex) {
+	                	}
+	                }	
+	                break;
+				case 3:
+					return;
+			}
+		}
+	}
+	
+	private static void showShopInv(Inventory shopInv) {
+		System.out.println("------------Shop-------------");
+		for (int i = 0; i < shopInv.getInv().length; i++) {
+			System.out.println(i + ": " + shopInv.getInv()[i].toString());;
+		}
+	}
 	
 	public static Player createCharacter() {
 		String name = Input.strPrompt("character name");
