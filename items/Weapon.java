@@ -2,11 +2,11 @@ package items;
 
 public class Weapon extends Item {
     
-    private int minDam;
-    private int maxDam;
-    private int damRange;
-    private boolean isRanged;
-    private boolean isMagic;
+    int minDam;
+    int maxDam;
+    int damRange;
+    boolean isRanged;
+    boolean isMagic;
     
     public Weapon(String name, int value, int minDam, int maxDam, boolean isRanged, boolean isMagic) {
         super(name, value);
@@ -19,6 +19,22 @@ public class Weapon extends Item {
     
     public int calculateAtk() {
         return (int)((Math.random() * damRange) + minDam);
+    }
+    
+    public int getMin() {
+    	return minDam;
+    }
+    
+    public int getMax() {
+    	return maxDam;
+    }
+    
+    public boolean getRanged() {
+    	return isRanged;
+    }
+    
+    public boolean getMagic() {
+    	return isMagic;
     }
     
     public String toString() {
