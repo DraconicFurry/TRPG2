@@ -1,6 +1,8 @@
 Confirmed To-Do List
   
-  Implement primary gameplay loop
+  Implement shop menu
+  
+  Implement dungeons
   
   Implement use for ResourceItems
   

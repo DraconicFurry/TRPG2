@@ -1,14 +1,15 @@
 package com;
-import helpers.*;
+import helpers.*; 
+import java.util.*; //
+import java.io.*; //
 import items.*;
 import items.armor.*;
 import java.util.ArrayList;
 
 public class RunGame {
-	public static void main(String[] args) {
-		boolean quit = false;
-		System.out.println("Fursade v0.0.1 initialized.\n");
-		while (!quit) {
+	public static void main(String[] args) throws FileNotFoundException, IOException, InventoryFullException {
+		System.out.println("TRPG v0.0.1 initialized.\n");
+		while (true) {
 			System.out.println("1: New Character");
 			System.out.println("2: Load Character");
 			System.out.println("3: Help");
@@ -30,34 +31,47 @@ public class RunGame {
 				case 2:
 					try {
 					   	SaveLoad.listFiles();
+					   	System.out.println((SaveLoad.numFiles() + 1) + ": Return to Menu");
               		} catch (Exception ex) {
                   		System.out.println("No savefiles found.");
                   		break;
                		}
 					try {
-						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles());
-						Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
-						runGame(loadPlayer);
+						int fileChoice = Input.validIntPrompt("file number", SaveLoad.numFiles() + 1);
+						if (fileChoice == SaveLoad.numFiles() + 1) {
+							break;
+						} else {
+							Player loadPlayer = SaveLoad.readSave(fileChoice - 1);
+							runGame(loadPlayer);
+						}
 					} catch (Exception ex) {
-						System.out.println("Savefile not found. Your save data may be corrupted.");
+						System.out.println("This savefile is corrupted.");
 					}
 					break;
 				case 3:
 					helpMenu();
 					break;
 				case 4:
-					quit = true;
-					break;
+					return;
 				case 5:
-					runTest();
+					try {
+						runTest();
+					} catch (FileNotFoundException e) {
+						System.out.println("File not found.");
+					}
 					break;
 			}
 			System.out.println();
 		}
 	}
 	
-	public static void runTest() {
-		System.out.println("No test scenario loaded.");
+	public static void runTest() throws FileNotFoundException {
+		Scanner sc = new Scanner(new File("Savefiles/Test.txt"));
+		while (sc.hasNext()) {
+			Input.strPrompt("any character to read next token");
+			System.out.println(sc.next());
+		}
+		sc.close();
 	}
 	
 	public static void runGame(Player player) {		
@@ -74,7 +88,15 @@ public class RunGame {
 					randBattle(player);
 					break;
 				case 2:
-					System.out.println(player.toString()); //replace with detailed statrs view later
+					System.out.println("---" + player.name + "---");
+					System.out.println("Level " + player.level + ", XP: " + player.XP + "/" + (player.level * 100));
+					System.out.println("Gold: " + player.gold);
+					System.out.println("HP: " + player.HP + "/" + player.MHP + ", MP: " + player.MP + "/" + player.MMP);
+					System.out.println(player.wep);
+					System.out.println(player.army.army[0]);
+					System.out.println(player.army.army[1]);
+					System.out.println(player.army.army[2]);
+					System.out.println(player.army.army[3]);
 					break;
 				case 3:
 					invMenu(player);
@@ -98,6 +120,7 @@ public class RunGame {
 		int mod = ((int)Math.random() * 3) - 1; //generates -1, 0, or 1
 		numEnemies -= mod;
 		enemyLevel += mod; //creates either 4 weak enemies, 3 normal enemies, or 2 strong enemies
+		if (enemyLevel <= 0) {enemyLevel = 1; numEnemies--;}
 		for (int i = 0; i < numEnemies; i++) {
 			enemies.add(randEnemy(enemyLevel, true));
 		}
@@ -112,7 +135,7 @@ public class RunGame {
 	public static Creature randEnemy(int enemyLevel, boolean changeLevel) {
 		if (changeLevel) {
 			int levelMod = (int)(Math.random()*4); //generates a number between 0 and 3
-			if (levelMod == 0) {
+			if (levelMod == 0 && enemyLevel > 1) {
 				enemyLevel--;
 			} else if (levelMod == 3) {
 				enemyLevel++;
@@ -163,9 +186,11 @@ public class RunGame {
 		}
 		
 		String name = "Wolf"; //replace with enemy name generator
-		String wepName = "Claws"; //replace this and next 2 lines with weapon type generator
 		boolean ranged = false;
+		if (Math.random() > 0.50) {ranged = true;}
 		boolean magic = false;
+		if (Math.random() > 0.50) {magic = true;}
+		String wepName = NameGenerator.generateWepName(ranged, magic); //replace this and next 2 lines with weapon type generator
 		return new Creature(name, enemyLevel, health, mana, new Weapon(wepName, 0, minDam, maxDam, ranged, magic));
 	}
 	
@@ -205,6 +230,7 @@ public class RunGame {
 	                        System.out.println("Not a weapon or piece of armor.");
 	                    }
                 	}
+
                     break;
                     
                 case 2: 
@@ -248,15 +274,19 @@ public class RunGame {
 		// This is a temp one just for practice purposes
 		// We can establish it wherever I'm thinking that it updates every time you clear a dungeon/fight
 		// But to make it truly random we would need that array of possible Items from which it would take random Items
+
 		boolean shopContinue = true;
+
 		Inventory shopInv = new Inventory(5);
 		shopInv.add(new StackItem("Hobgoblin Horn", 3, 10));
 		shopInv.add(new Weapon("Skeleton Arm", 15, 10, 20, false, false));
 		shopInv.add(new ResourceItem("Iron", 7, 5));
+
 		showShopInv(shopInv);
 		System.out.println("You have " + player.gold + "g\n");
 		
 		while (shopContinue) {
+
 			System.out.println("1: Buy");
 			System.out.println("2: Sell");
 			System.out.println("3: Back");
@@ -265,22 +295,33 @@ public class RunGame {
 				case 1:
 					int shopBuyChoice = Input.validIntPrompt("item to buy", shopInv.getInv().length);
 					if (shopInv.getInv()[shopBuyChoice] instanceof StackItem) {
+
+						// StackItems. Costs gold (Or throws exception), then adds the item 
 						StackItem temp = (StackItem) shopInv.getInv()[shopBuyChoice];
 						int buyNumber = Input.validIntPrompt("number to buy", temp.getAmount());
-						int firstStackNum = temp.getAmount(); 
-						temp.changeAmount(buyNumber);
-						player.inv.add(temp);
-						temp.changeAmount(firstStackNum - buyNumber);
-						player.reward(temp.getValue() * buyNumber * -1, 0);
+						try {
+							player.buy(buyNumber * temp.getValue());
+							int firstNum = temp.getAmount();
+							temp.changeAmount(buyNumber);
+							player.inv.add(temp);
+							temp.changeAmount(firstNum - buyNumber);
+						} catch (Exception ex) {
+							System.out.println("Not enough gold or inventory space");
+						}
 					} else {
-						player.inv.add(shopInv.getInv()[shopBuyChoice]);
-						shopInv.trash(shopBuyChoice, 1);
-						shopInv.sortInv();
-						player.reward(shopInv.getInv()[shopBuyChoice].getValue() * -1, 0);
+						try {
+							player.buy(shopInv.getInv()[shopBuyChoice].getValue());
+							player.inv.add(shopInv.getInv()[shopBuyChoice]);
+							shopInv.trash(shopBuyChoice, 1);
+							shopInv.sortInv();
+						} catch (Exception ex) {
+							System.out.println("Not enough gold or inventory space");
+						}
 					}
 					break;
 					
 				case 2:
+
 					if (BagChecker.checkForItem(player)) {
 						player.inv.display();
 						int toSellIndex = Input.validIntPrompt("item to sell", player.inv.getInv().length);
@@ -299,11 +340,13 @@ public class RunGame {
 				case 3:
 					shopContinue = false;
 					break;
+
 			}
 		}
 	}
 	
-	public static void showShopInv(Inventory shopInv) {
+
+	private static void showShopInv(Inventory shopInv) {
 		System.out.println("------------Shop-------------");
 		for (int i = 0; i < shopInv.getInv().length; i++) {
 			System.out.println(i + ": " + shopInv.getInv()[i].toString());;

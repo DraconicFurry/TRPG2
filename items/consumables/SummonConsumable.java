@@ -5,7 +5,7 @@ import java.util.*;
 
 public class SummonConsumable extends Consumable {
 
-    private Creature ally;
+    public Creature ally;
     
     public SummonConsumable(String name, int value, int amount, String creatureName, int level, int HP, int MP, Weapon wep) {
         super(name, 1, value, amount);

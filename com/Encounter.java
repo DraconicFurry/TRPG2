@@ -50,9 +50,9 @@ public class Encounter {
 			}
 		}
 		if (player.isDead) {
-			endBattle(true, false);
-		} else if (dEnemies.size() == startSize) { //all enemies have been killed, player did not run
 			endBattle(false, false);
+		} else if (dEnemies.size() == startSize) { //all enemies have been killed, player did not run
+			endBattle(true, false);
 		} else {  //player ran
 			endBattle(true, true);
 		}
@@ -62,7 +62,17 @@ public class Encounter {
 		boolean turnOver = false;
 		while (!turnOver) {
 			System.out.println();
-			//print enemies
+			System.out.println(player);
+			if (allies != null) {
+				System.out.println("\n ---Allies---");
+				for (int i = 0; i < allies.size(); i++) {
+					System.out.println(allies.get(i));
+				}
+			}
+			System.out.println("\n ---Enemies---");
+			for (int i = 0; i < enemies.size(); i++) {
+				System.out.println(enemies.get(i));
+			}
 			System.out.println();
 			System.out.println("1: Attack");
 			System.out.println("2: Skills");
@@ -75,7 +85,7 @@ public class Encounter {
 						System.out.println((i + 1) + ": " + enemies.get(i).getName());
 					}
 					int target = Input.validIntPrompt("target", enemies.size());
-					enemies.get(target - 1).takeDamage(player.getWep().calculateAtk());
+					enemies.get(target - 1).takeDamage(player.getWep().calculateAtk(), player.name);
 					if (enemies.get(target - 1).isDead) {
 						dEnemies.add(enemies.remove(target - 1));
 					}
@@ -104,7 +114,7 @@ public class Encounter {
 	public void allyAction(Creature ally) {
 		if (enemies.size() > 0) {
 			int target = (int)(Math.random() * enemies.size());
-			enemies.get(target).takeDamage(ally.getWep().calculateAtk());
+			enemies.get(target).takeDamage(ally.getWep().calculateAtk(), ally.name);
 			if (enemies.get(target).isDead) {
 				dEnemies.add(enemies.remove(target));
 			}
@@ -113,13 +123,13 @@ public class Encounter {
 	
 	public void enemyAction(Creature enemy) {
 		if (allies == null || allies.size() <= 0) {
-			player.takeDamage(enemy.getWep().calculateAtk());
+			player.takeDamage(enemy.getWep().calculateAtk(), enemy.name);
 		} else {
 			int target = (int)(Math.random() * (allies.size() + 1));
 			if (target == 0) {
-				player.takeDamage(enemy.getWep().calculateAtk());	
+				player.takeDamage(enemy.getWep().calculateAtk(), enemy.name);	
 			} else {
-				allies.get(target - 1).takeDamage(enemy.getWep().calculateAtk());
+				allies.get(target - 1).takeDamage(enemy.getWep().calculateAtk(), enemy.name);
 				if (allies.get(target - 1).isDead) {
 					dAllies.add(allies.remove(target - 1));	
 				}
