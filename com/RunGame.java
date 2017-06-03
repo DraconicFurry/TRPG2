@@ -102,7 +102,10 @@ public class RunGame {
 					invMenu(player);
 					break;
 				case 4:
-					System.out.println("Shop not yet implemented");
+					try {
+					shopMenu(player);
+					} catch (Exception ex) {
+					}
 					break;
 				case 5:
 					return;
@@ -205,54 +208,59 @@ public class RunGame {
 
             switch (invChoice) {
                 case 1:
-                	System.out.println("These are your currently equipped weapon and armor:");
-                    System.out.println(player.getWep().toString());
-                    player.army.display();
-                    System.out.println();
-                    System.out.println("And this is your bag. Look for weapons or pieces of armor to equip!");
-                    player.inv.display();
-                    int toEquipIndex = Input.validIntPrompt("the number of a weapon or piece of armor in your bag to equip, or " + (player.inv.getInv().length + 1) + " to go back", player.inv.getInv().length + 1);
-                    try {
-                    	if (toEquipIndex == (player.inv.getInv().length + 1)) {
-                    		System.out.println("Returning to main inventory menu");
-                    	} else if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
-                            player.equipWep(toEquipIndex);
-                            System.out.println("Sucessfully equipped weapon!");
-                        } else if (player.inv.getInv()[toEquipIndex] instanceof Armor) {
-                            player.equipArmor(toEquipIndex);
-                            System.out.println("Sucessfully equipped armor!");
-                        } else {
-                        	throw new InsufficientItemException();
-                        }
-                    } catch (Exception ex) {
-                        System.out.println("Not a weapon or piece of armor.");
-                    }
+                	if (BagChecker.checkForArmor(player)) {
+	                	System.out.println("This is your currently equipped weapon and armor:");
+	                    System.out.println(player.getWep().toString());
+	                    player.army.display();
+	                    System.out.println();
+	                    System.out.println("And this is your bag. Look for weapons or pieces of armor to equip!");
+	                    player.inv.display();
+	                    int toEquipIndex = Input.validIntPrompt("the number of a weapon or piece of armor in your bag to equip", player.inv.getInv().length);
+	                    try {
+	                        if (player.inv.getInv()[toEquipIndex] instanceof Weapon) {
+	                            player.equipWep(toEquipIndex);
+	                            System.out.println("Sucessfully equipped weapon!");
+	                        } else if (player.inv.getInv()[toEquipIndex] instanceof Armor) {
+	                            player.equipArmor(toEquipIndex);
+	                            System.out.println("Sucessfully equipped armor!");
+	                        } else {
+	                        	throw new InsufficientItemException();
+	                        }
+	                    } catch (Exception ex) {
+	                        System.out.println("Not a weapon or piece of armor.");
+	                    }
+                	}
+
                     break;
+                    
                 case 2: 
-                	System.out.println("Here is your bag. Remember, you can sell items in the shop instead of throwing them away!");
-                	player.inv.display();
-                    int toTrashIndex = Input.validIntPrompt("item's number", player.inv.getInv().length);
-                    if (player.inv.getInv()[toTrashIndex] instanceof StackItem) {
-                    	StackItem temp = (StackItem) player.inv.getInv()[toTrashIndex];
-                        int toTrashNum = Input.validIntPrompt("number to throw away", temp.getAmount());
-                        try {
-                        	if (player.inv.getInv()[toTrashIndex] == null) {
-                        		throw new InsufficientItemException();
-                        	}
-                        	player.inv.trash(toTrashIndex, toTrashNum);
-                        } catch (Exception ex) {
-                        	System.out.println("You cannot throw that away");
-                        }
-                    } else if (player.inv.getInv()[toTrashIndex] instanceof Item) {
-                    	try {
-                    		player.inv.trash(toTrashIndex, 1);
-                    	} catch (Exception ex) {
-                    		System.out.println("You cannot throw that away");
-                    	}
-                    } else {
-                    	System.out.println("Not an item, cannot be thrown away");
-                    }
+                	if (BagChecker.checkForItem(player)) {
+	                	System.out.println("Here is your bag. Remember, you can sell items in the shop instead of throwing them away!");
+	                	player.inv.display();
+	                    int toTrashIndex = Input.validIntPrompt("item's number", player.inv.getInv().length);
+	                    if (player.inv.getInv()[toTrashIndex] instanceof StackItem) {
+	                    	StackItem temp = (StackItem) player.inv.getInv()[toTrashIndex];
+	                        int toTrashNum = Input.validIntPrompt("number to throw away", temp.getAmount());
+	                        try {
+	                        	if (player.inv.getInv()[toTrashIndex] == null) {
+	                        		throw new InsufficientItemException();
+	                        	}
+	                        	player.inv.trash(toTrashIndex, toTrashNum);
+	                        } catch (Exception ex) {
+	                        	System.out.println("You cannot throw that away");
+	                        }
+	                    } else if (player.inv.getInv()[toTrashIndex] instanceof Item) {
+	                    	try {
+	                    		player.inv.trash(toTrashIndex, 1);
+	                    	} catch (Exception ex) {
+	                    		System.out.println("You cannot throw that away");
+	                    	}
+	                    } else {
+	                    	System.out.println("Not an item, cannot be thrown away");
+	                    }
+                	}
                     break;
+                    
                 case 3:
                 	return;
             }
@@ -266,14 +274,19 @@ public class RunGame {
 		// This is a temp one just for practice purposes
 		// We can establish it wherever I'm thinking that it updates every time you clear a dungeon/fight
 		// But to make it truly random we would need that array of possible Items from which it would take random Items
+
+		boolean shopContinue = true;
+
 		Inventory shopInv = new Inventory(5);
 		shopInv.add(new StackItem("Hobgoblin Horn", 3, 10));
 		shopInv.add(new Weapon("Skeleton Arm", 15, 10, 20, false, false));
 		shopInv.add(new ResourceItem("Iron", 7, 5));
-		System.out.println("You have " + player.gold + "g\n");
+
 		showShopInv(shopInv);
+		System.out.println("You have " + player.gold + "g\n");
 		
-		while (true) {
+		while (shopContinue) {
+
 			System.out.println("1: Buy");
 			System.out.println("2: Sell");
 			System.out.println("3: Back");
@@ -282,6 +295,7 @@ public class RunGame {
 				case 1:
 					int shopBuyChoice = Input.validIntPrompt("item to buy", shopInv.getInv().length);
 					if (shopInv.getInv()[shopBuyChoice] instanceof StackItem) {
+
 						// StackItems. Costs gold (Or throws exception), then adds the item 
 						StackItem temp = (StackItem) shopInv.getInv()[shopBuyChoice];
 						int buyNumber = Input.validIntPrompt("number to buy", temp.getAmount());
@@ -307,25 +321,31 @@ public class RunGame {
 					break;
 					
 				case 2:
-					player.inv.display();
-					int toSellIndex = Input.validIntPrompt("item to sell", player.inv.getInv().length);
-	                if (player.inv.getInv()[toSellIndex] instanceof StackItem) {
-	                	StackItem temp = (StackItem) player.inv.getInv()[toSellIndex];
-	                    int toSellNum = Input.validIntPrompt("number to throw away", temp.getAmount());
-	                    	player.reward(player.inv.trash(toSellIndex, toSellNum), 0);
-	                } else {
-	                	try {
-	                		player.inv.trash(toSellIndex, 1);
-	                	} catch (Exception ex) {
-	                	}
-	                }	
+
+					if (BagChecker.checkForItem(player)) {
+						player.inv.display();
+						int toSellIndex = Input.validIntPrompt("item to sell", player.inv.getInv().length);
+		                if (player.inv.getInv()[toSellIndex] instanceof StackItem) {
+		                	StackItem temp = (StackItem) player.inv.getInv()[toSellIndex];
+		                    int toSellNum = Input.validIntPrompt("number to throw away", temp.getAmount());
+		                    	player.reward(player.inv.trash(toSellIndex, toSellNum), 0);
+		                } else {
+		                	try {
+		                		player.inv.trash(toSellIndex, 1);
+		                	} catch (Exception ex) {
+		                	}
+		                }
+					}
 	                break;
 				case 3:
-					return;
+					shopContinue = false;
+					break;
+
 			}
 		}
 	}
 	
+
 	private static void showShopInv(Inventory shopInv) {
 		System.out.println("------------Shop-------------");
 		for (int i = 0; i < shopInv.getInv().length; i++) {
